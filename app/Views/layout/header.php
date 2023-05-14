@@ -5,6 +5,6 @@
 
     <title><?= $title ?></title>
 
-    <link rel="stylesheet" href="css/app.min.css">
+    <link rel="stylesheet" href="/css/app.min.css">
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 </head>
