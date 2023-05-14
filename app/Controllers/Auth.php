@@ -30,18 +30,23 @@ class Auth extends BaseController {
         $password = $this->request->getVar('password');
 
         $data_user = $this->userModel->where('username', $username)->first();
-        $password_check = password_verify($password, $data_user['password']);
-        
-        if (!$data_user || !$password_check) {
-            session()->setFlashdata('error', 'Login gagal');
-            return redirect()->back()->withInput();
+      
+        if ($data_user) {
+            $password_check = password_verify($password, $data_user['password']);
+            if (!$password_check){
+                session()->setFlashdata('error', 'Password Salah !');
+                return redirect()->back()->withInput();
+            } else {
+                session()->set([
+                    'username' => $data_user['username'],
+                    'role_id' => $data_user['role_id'],
+                    'logged_in' => true
+                ]);
+                return redirect()->to('/dashboard');
+            }
         } else {
-            session()->set([
-                'username' => $data_user['username'],
-                'role_id' => $data_user['role_id'],
-                'logged_in' => true
-            ]);
-            return redirect()->to('/dashboard');
+            session()->setFlashdata('error', 'Username belum terdaftar !');
+            return redirect()->back()->withInput();
         }
     }
 }
