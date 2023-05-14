@@ -16,10 +16,9 @@ class Auth extends BaseController {
         $this->data['session'] = $this->session;
     }
 
-    public function index() {
+    public function login() {
 
         $this->data['title'] = "Login Form";
-        helper('form');
 
         return view('auth/login', $this->data);
     }
@@ -42,7 +41,7 @@ class Auth extends BaseController {
                     'role_id' => $data_user['role_id'],
                     'logged_in' => true
                 ]);
-                return redirect()->to('/dashboard');
+                return redirect()->to(base_url(''));
             }
         } else {
             session()->setFlashdata('error', 'Username belum terdaftar !');

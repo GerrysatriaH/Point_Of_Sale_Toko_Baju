@@ -13,7 +13,7 @@ $routes = Services::routes();
 
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Auth');
-$routes->setDefaultMethod('index');
+$routes->setDefaultMethod('login');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 
@@ -31,11 +31,8 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-
-$routes->get('/', 'Auth::index');
-$routes->get('login', 'Auth::index');
-$routes->post('login/process', 'Auth::process');
-$routes->get('logout', 'Auth::logout');
+$routes->get('/auth/(:any)', 'Auth::$1');
+$routes->post('/auth/(:any)', 'Auth::$1');
 
 /*
  * --------------------------------------------------------------------
