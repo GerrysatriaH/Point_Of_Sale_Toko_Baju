@@ -1,6 +1,8 @@
 <?= $this->extend('layout/templates'); ?>
 <?= $this->section('content'); ?>
 
-    <p>Ini Dashboard</p>
+<div class="p-4 sm:ml-64">
+   <p>Dashboard</p>
+</div>
 
 <?= $this->endSection(); ?>
