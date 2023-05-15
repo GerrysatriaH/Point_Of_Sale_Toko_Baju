@@ -15,7 +15,7 @@
                 <div>
                     <label class="label text-base label-text">Username</label>
                     <input type="text" placeholder="Enter Username" name="username" class="w-full input input-bordered" />
-                    <span class="label label-text-alt text-error"><?= session()->getFlashdata('not_valid')['email'] ?? ' ' ?></span>
+                    <span class="label label-text-alt text-error"><?= session()->getFlashdata('not_valid')['username'] ?? ' ' ?></span>
                 </div>
                 <div>
                     <label class="label text-base label-text">Password</label>

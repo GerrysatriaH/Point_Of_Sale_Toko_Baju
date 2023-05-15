@@ -14,7 +14,7 @@ class UsersModel extends Model {
 
     protected $rules = [
         'email'     => 'required|is_unique[users.email]',
-        'username'  => 'required|min_length[2]|max_length[50]|alpha_numeric|is_unique[users.username]',
+        'username'  => 'required|min_length[2]|max_length[50]|alpha_numeric',
         'password'  => 'required|min_length[2]|max_length[255]',
         'nama'      => 'required|min_length[2]|max_length[50]|alpha_space',
         'alamat'    => 'required|min_length[2]|max_length[255]'
@@ -29,8 +29,7 @@ class UsersModel extends Model {
             'required'      => 'Username harus terisi',
             'min_length'    => 'Username minimal terdiri dari 2 karakter',
             'max_length'    => 'Username maksimal terdiri dari 50 karakter',
-            'alpha_numeric' => 'Username hanya boleh terdiri dari huruf dan angka',
-            'is_unique'     => 'Username telah terdaftar'
+            'alpha_numeric' => 'Username hanya boleh terdiri dari huruf dan angka'
         ],
         'password' => [
             'required'      => 'Password harus terisi',

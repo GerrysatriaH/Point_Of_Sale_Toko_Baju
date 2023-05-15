@@ -31,6 +31,10 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+$routes->get('/', 'Auth::login');
+$routes->get('/dashboard', 'Dashboard::index');
+
 $routes->get('/auth/(:any)', 'Auth::$1');
 $routes->post('/auth/(:any)', 'Auth::$1');
 
@@ -47,6 +51,7 @@ $routes->post('/auth/(:any)', 'Auth::$1');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
+
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

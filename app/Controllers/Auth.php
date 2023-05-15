@@ -19,40 +19,55 @@ class Auth extends BaseController {
     public function login() {
 
         $this->data['title'] = "Login Form";
-
         return view('auth/login', $this->data);
     }
 
     public function auth_login() {
+
         $rules = $this->userModel->rules;
         $message_error = $this->userModel->rulesValidation;
 
-        if (!$this->validate($rules, $message_error)){
-            session()->setFlashdata('not_valid', $this->validator->getErrors());
-            return redirect()->back()->withInput();
-        } else {
-            $username = $this->request->getVar('username');
-            $password = $this->request->getVar('password');
+        $username = $this->request->getVar('username');
+        $password = $this->request->getVar('password');
+        
+        $data_user = $this->userModel->where('username', $username)->first();
     
-            $data_user = $this->userModel->where('username', $username)->first();
-    
-            if ($data_user) {
-                $password_check = password_verify($password, $data_user['password']);
-                if (!$password_check){
-                    session()->setFlashdata('error', 'Password Salah !');
+        if ($data_user) {
+            $password_check = password_verify($password, $data_user['password']);
+            if (!$password_check){
+                if (!$this->validate($rules, $message_error)){
+                    session()->setFlashdata('not_valid', $this->validator->getErrors());
                     return redirect()->back()->withInput();
                 } else {
-                    session()->set([
-                        'username' => $data_user['username'],
-                        'role_id' => $data_user['role_id'],
-                        'logged_in' => true
-                    ]);
-                    return redirect()->to(base_url('/dashboard'));
-                }
+                    session()->setFlashdata('error', 'Password Salah !');
+                    return redirect()->to(base_url('auth/login'))->withInput();
+                } 
+            } else {
+                session()->set([
+                    'username' => $data_user['username'],
+                    'role_id' => $data_user['role_id'],
+                    'logged_in' => true
+                ]);
+                return redirect()->to(base_url('/dashboard'));
+            }
+        } else {
+            if (!$this->validate($rules, $message_error)){
+                session()->setFlashdata('not_valid', $this->validator->getErrors());
+                return redirect()->back()->withInput();
             } else {
                 session()->setFlashdata('error', 'Username belum terdaftar !');
-                return redirect()->back()->withInput();
-            }
+                return redirect()->to(base_url('auth/login'))->withInput();
+            }    
         }
+    }
+
+    public function register() {
+
+        $this->data['title'] = "Register Form";
+        return view('auth/register', $this->data);
+    }
+
+    public function auth_register() {
+
     }
 }

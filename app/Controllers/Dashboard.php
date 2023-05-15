@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController {
+class Dashboard extends BaseController {
     protected $session;
     protected $data;
 
