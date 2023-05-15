@@ -10,5 +10,6 @@
 
         <script src="<?= base_url('js/app.min.js') ?>"></script>
         <script src="<?= base_url('assets/fontawesome/js/all.min.js') ?>"></script>
+        
     </body>
 </html>

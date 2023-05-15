@@ -6,10 +6,7 @@
     
     <body class="h-screen bg-gray-100">
 
-        <!-- Main content -->
-        <div class="p-6">
-            <?= $this->renderSection('content'); ?>
-        </div>
+        <?= $this->renderSection('content'); ?>
 
         <script src="<?= base_url('js/app.min.js') ?>"></script>
         <script src="<?= base_url('assets/fontawesome/js/all.min.js') ?>"></script>

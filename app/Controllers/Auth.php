@@ -35,29 +35,21 @@ class Auth extends BaseController {
         if ($data_user) {
             $password_check = password_verify($password, $data_user['password']);
             if (!$password_check){
-                if (!$this->validate($rules, $message_error)){
-                    session()->setFlashdata('not_valid', $this->validator->getErrors());
-                    return redirect()->back()->withInput();
-                } else {
-                    session()->setFlashdata('error', 'Password Salah !');
-                    return redirect()->to(base_url('auth/login'))->withInput();
-                } 
+                return redirect()->to(base_url('auth/login'))
+                                 ->withInput()
+                                 ->with('error', 'Password Salah !');
             } else {
                 session()->set([
-                    'username' => $data_user['username'],
-                    'role_id' => $data_user['role_id'],
+                    'username'  => $data_user['username'],
+                    'role_id'   => $data_user['role_id'],
                     'logged_in' => true
                 ]);
                 return redirect()->to(base_url('/dashboard'));
             }
         } else {
-            if (!$this->validate($rules, $message_error)){
-                session()->setFlashdata('not_valid', $this->validator->getErrors());
-                return redirect()->back()->withInput();
-            } else {
-                session()->setFlashdata('error', 'Username belum terdaftar !');
-                return redirect()->to(base_url('auth/login'))->withInput();
-            }    
+            return redirect()->to(base_url('auth/login'))
+                             ->withInput()
+                             ->with('error', 'Username belum terdaftar !');
         }
     }
 
