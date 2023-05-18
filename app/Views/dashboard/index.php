@@ -55,7 +55,6 @@
                 </div>
             </div>
         </div>
-        <!-- Main content -->
         <div class="row">
             <section class="col-lg-7 connectedSortable">
                 <div class="card">

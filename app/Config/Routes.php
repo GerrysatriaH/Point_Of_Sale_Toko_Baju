@@ -35,6 +35,18 @@ $routes->set404Override();
 
 $routes->get('/', 'Dashboard::index');
 
+// Register
+$routes->get('/register', 'Auth::register');
+$routes->post('/register/process', 'Auth::auth_register');
+
+// Login & Logout
+$routes->get('/login', 'Auth::login');
+$routes->post('/login/process', 'Auth::auth_login');
+$routes->get('/logout', 'Auth::logout');
+ 
+$routes->get('/auth/(:any)', 'Auth::$1');
+$routes->post('/auth/(:any)', 'Auth::$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

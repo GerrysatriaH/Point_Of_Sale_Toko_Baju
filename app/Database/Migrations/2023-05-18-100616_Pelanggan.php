@@ -4,43 +4,47 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Pemasok extends Migration {
-
+class Pelanggan extends Migration {
 	public function up() {
 
-		// Pemasok
+		// Tabel pelanggan
 		$this->forge->addField([
-
-			'id'                => [
+			'id'        => [
                 'type'              => 'INT', 
                 'constraint'        => 11, 
                 'unsigned'          => true, 
                 'auto_increment'    => true
             ],
 			'nama'      => [
-                'type'          => 'VARCHAR', 
+                'type'	        => 'VARCHAR', 
                 'constraint'    => 50
             ],
-			'no_telp'      => [
-                'type'          => 'VARCHAR', 
-                'constraint'    => 20
+			'id_gender'    => [
+                'type'	        => 'INT', 
+                'constraint'	=> 11
+            ],
+			'tipe'   => [
+                'type'          => 'ENUM', 
+                'constraint'     => ['umum', 'member'],
+                'default'       => 'umum'
             ],
 			'alamat'    => [
                 'type'          => 'VARCHAR', 
-                'constraint'    => 100
+                'constraint'	=> 100
             ],
 			'created_at datetime default current_timestamp',
 			'updated_at datetime default current_timestamp on update current_timestamp'
 		]);
 
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('pemasok', true);
+		$this->forge->createTable('pelanggan', true);
 	}
 
 	//--------------------------------------------------------------------
 
-	public function down() {
-
-		$this->forge->dropTable('pemasok', true);
+	public function down()
+	{
+		$this->forge->dropTable('pelanggan', true);
 	}
 }
+

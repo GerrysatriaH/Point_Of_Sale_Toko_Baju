@@ -64,11 +64,6 @@ class Users extends Migration {
                 'constraint'    => 255, 
                 'null'          => true
             ],
-			'avatar'        => [
-                'type'          => 'VARCHAR', 
-                'constraint'    => 255, 
-                'default'       => 'avatar.jpg'
-            ],
 			'status'		=> [
                 'type'          => 'ENUM', 
                 'constraint'     => ['aktif', 'non-aktif'],
