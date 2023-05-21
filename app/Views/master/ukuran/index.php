@@ -8,27 +8,41 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="<?= base_url('/pelanggan/create') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
-                        <table class="table table-bordered">
+                        <a href="<?= base_url('/master/create_kategori') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
+                        <table class="table table-bordered table-striped">
+                            <colgroup>
+                                <col width="10%">
+                                <col width="40%">
+                                <col width="40%">
+                            </colgroup>
                             <thead>
-                                <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th>Task</th>
-                                    <th>Progress</th>
-                                    <th style="width: 40px">Label</th>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Ukuran</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Update software</td>
-                                    <td>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-danger">55%</span></td>
-                                </tr>
+                                <?php if(count($ukuran) > 0): 
+                                        $i = 1;
+                                ?>
+                                    <?php foreach($ukuran as $u) : ?>
+                                        <tr>
+                                            <td class="text-center"><?= $i++; ?></td>
+                                            <td class="text-center"><?= $u->ukuran ?></td>
+                                            <td class="align-middle text-center">
+                                                <div class="btn-group btn-group-sm">
+                                                    <a href="<?= base_url() ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                        <i class="fa fa-edit"></i> Edit Data
+                                                    </a>
+                                                    <a href="<?= base_url() ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                        <i class="fa fa-trash"></i> Delete Data
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>

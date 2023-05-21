@@ -7,12 +7,16 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required>
                 </div>
                 <div class="form-group">
-                    <label for="nama">Gender</label>
-                    <input type="radio" class="form-check-input" name="nama" id="nama"> Laki - laki
-                    <input type="radio" class="form-check-input" name="nama" id="nama"> Perempuan
+                    <p class="text-bold">Gender</p>
+                    <label for="laki-laki">
+                        <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki" required> Laki-laki
+                    </label>
+                    <label for="perempuan" class="px-4">
+                        <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" required> Perempuan
+                    </label>
                 </div>
                 <div class="form-group">
                     <label for="nama">Tipe</label>

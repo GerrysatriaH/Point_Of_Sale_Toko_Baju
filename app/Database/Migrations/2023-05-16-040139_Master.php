@@ -121,8 +121,8 @@ class Master extends Migration {
 	//--------------------------------------------------------------------
 
 	public function down() {
-		$this->forge->dropTable('tb_kategori', true);
-		$this->forge->dropTable('tb_ukuran', true);
-		$this->forge->dropTable('tb_produk', true);
+		$this->forge->dropTable('kategori', true);
+		$this->forge->dropTable('ukuran', true);
+		$this->forge->dropTable('produk', true);
 	}
 }

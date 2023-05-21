@@ -57,7 +57,6 @@ $routes->get('/supplier/(:any)', 'Supplier::$1');
 $routes->post('/supplier/(:any)', 'Supplier::$1');
 
 // Master
-$routes->get('/master', 'Master::index');
 $routes->get('/master/(:any)', 'Master::$1');
 $routes->post('/master/(:any)', 'Master::$1');
 

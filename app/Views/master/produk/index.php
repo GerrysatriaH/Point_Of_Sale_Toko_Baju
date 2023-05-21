@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="<?= base_url('/pelanggan/create') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
+                        <a href="<?= base_url('/master/create_produk') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>

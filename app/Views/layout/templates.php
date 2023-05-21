@@ -7,20 +7,17 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
-    <?= $this->include('component/navbar'); ?>
-    <?= $this->include('component/sidebar'); ?>
+        <?= $this->include('component/navbar'); ?>
+        <?= $this->include('component/sidebar'); ?>
 
-    <div class="content-wrapper">
+        <div class="content-wrapper">
 
-        <?= $this->include('component/breadscrums'); ?> 
+            <?= $this->include('component/breadscrums'); ?> 
+            <?= $this->renderSection('content'); ?>
 
-        <?= $this->renderSection('content'); ?>
-        
+        </div>
         <?= $this->include('layout/footer'); ?>
-        
     </div>
-
     <?= $this->include('layout/script'); ?>
-
 </body>
 </html>
