@@ -35,17 +35,31 @@ $routes->set404Override();
 
 $routes->get('/', 'Dashboard::index');
 
-// Register
-$routes->get('/register', 'Auth::register');
-$routes->post('/register/process', 'Auth::auth_register');
+// Dashboard
+$routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/dashboard/(:any)', 'Dashboard::$1');
+$routes->post('/dashboard/(:any)', 'Dashboard::$1');
 
-// Login & Logout
+// Register, Login & Logout
 $routes->get('/login', 'Auth::login');
-$routes->post('/login/process', 'Auth::auth_login');
-$routes->get('/logout', 'Auth::logout');
- 
+$routes->get('/register', 'Auth::register');
 $routes->get('/auth/(:any)', 'Auth::$1');
 $routes->post('/auth/(:any)', 'Auth::$1');
+
+// Pelanggan
+$routes->get('/pelanggan', 'Pelanggan::index');
+$routes->get('/pelanggan/(:any)', 'Pelanggan::$1');
+$routes->post('/pelanggan/(:any)', 'Pelanggan::$1');
+
+// Supplier
+$routes->get('/supplier', 'Supplier::index');
+$routes->get('/supplier/(:any)', 'Supplier::$1');
+$routes->post('/supplier/(:any)', 'Supplier::$1');
+
+// Master
+$routes->get('/master', 'Master::index');
+$routes->get('/master/(:any)', 'Master::$1');
+$routes->post('/master/(:any)', 'Master::$1');
 
 /*
  * --------------------------------------------------------------------

@@ -19,14 +19,18 @@ class Pelanggan extends Migration {
                 'type'	        => 'VARCHAR', 
                 'constraint'    => 50
             ],
-			'id_gender'    => [
-                'type'	        => 'INT', 
-                'constraint'	=> 11
+			'gender'    => [
+                'type'	        => 'VARCHAR', 
+                'constraint'	=> 2
             ],
 			'tipe'   => [
                 'type'          => 'ENUM', 
                 'constraint'     => ['umum', 'member'],
                 'default'       => 'umum'
+            ],
+			'no_telp'    => [
+                'type'          => 'VARCHAR', 
+                'constraint'	=> 20
             ],
 			'alamat'    => [
                 'type'          => 'VARCHAR', 

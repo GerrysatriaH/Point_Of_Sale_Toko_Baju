@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="row">
-            <section class="col-lg-7 connectedSortable">
+            <section class="col-lg-12 connectedSortable">
                 <div class="card">
                     <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-chart-pie mr-1"></i>Sales</h3>
