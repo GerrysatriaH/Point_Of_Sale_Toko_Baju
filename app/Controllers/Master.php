@@ -34,7 +34,6 @@ class Master extends BaseController{
         );
 
         $this->data['kategori'] = $this->category_model->orderBy('id ASC')->select('*')->get()->getResult();
-
         return view('master/kategori/index', $this->data);
     }
 
@@ -53,19 +52,19 @@ class Master extends BaseController{
     }
 
     public function update_kategori($id=''){
-        $this->data['title'] = 'Kategori Baju';
+        $this->data['title'] = 'Edit Kategori Baju';
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
                 'url' => base_url()
             ),
             array(
-                'title' => 'Kategori Baju'
+                'title' => 'Edit Kategori Baju'
             )
         );
 
         if(empty($id)){
-            return redirect()->to('/main/kategori');
+            return redirect()->to('/master/kategori');
         }
         $this->data['data'] = $this->category_model->select('*')->where(['id'=>$id])->first();
         return view('master/kategori/edit', $this->data);
@@ -76,10 +75,12 @@ class Master extends BaseController{
         $post = [
             'kategori' => $this->request->getPost('kategori')
         ];
-        if(!empty($this->request->getPost('id')))
+        if(!empty($this->request->getPost('id'))) {
             $save = $this->category_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
-        else
+        } else {
             $save = $this->category_model->insert($post);
+        }
+
         if($save){
             return redirect()->to('/master/kategori');
         } else {
@@ -111,9 +112,69 @@ class Master extends BaseController{
             )
         );
 
-        $this->data['ukuran'] = $this->size_model->orderBy('id ASC')->select('*')->get()->getResult()->pagina;
-
+        $this->data['ukuran'] = $this->size_model->orderBy('id ASC')->select('*')->get()->getResult();
         return view('master/ukuran/index', $this->data);
+    }
+
+    public function create_ukuran(){
+        $this->data['title'] = 'Tambah Ukuran Baju';
+        $this->data['breadcrumbs'] = array(
+            array(
+                'title' => 'Dashboard',
+                'url' => base_url()
+            ),
+            array(
+                'title' => 'Tambah Ukuran Baju'
+            )
+        );
+        return view('master/ukuran/create', $this->data);
+    }
+
+    public function update_ukuran($id=''){
+        $this->data['title'] = 'Edit Ukuran Baju';
+        $this->data['breadcrumbs'] = array(
+            array(
+                'title' => 'Dashboard',
+                'url' => base_url()
+            ),
+            array(
+                'title' => 'Edit Ukuran Baju'
+            )
+        );
+
+        if(empty($id)){
+            return redirect()->to('/main/ukuran');
+        }
+        $this->data['data'] = $this->size_model->select('*')->where(['id'=>$id])->first();
+        return view('master/ukuran/edit', $this->data);
+    }
+
+    public function submit_changes_ukuran(){
+        $this->data['request'] = $this->request;
+        $post = [
+            'ukuran' => $this->request->getPost('ukuran')
+        ];
+        if(!empty($this->request->getPost('id'))) {
+            $save = $this->size_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
+        } else {
+            $save = $this->size_model->insert($post);
+        }
+        
+        if($save){
+            return redirect()->to('/master/ukuran');
+        } else {
+            return redirect()->to('/master/ukuran');
+        }
+    }
+
+    public function delete_ukuran($id=''){
+        if(empty($id)){
+            return redirect()->to('/master/ukuran');
+        }
+        $delete = $this->size_model->delete($id);
+        if($delete){
+            return redirect()->to('/master/ukuran');
+        }
     }
 
     //-------------------------------------------- Produk Baju -----------------------------------------------------//

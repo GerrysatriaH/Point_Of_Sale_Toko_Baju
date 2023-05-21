@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="<?= base_url('/master/create_kategori') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
+                        <a href="<?= base_url('/master/create_ukuran') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
                         <table class="table table-bordered table-striped">
                             <colgroup>
                                 <col width="10%">
@@ -32,10 +32,10 @@
                                             <td class="text-center"><?= $u->ukuran ?></td>
                                             <td class="align-middle text-center">
                                                 <div class="btn-group btn-group-sm">
-                                                    <a href="<?= base_url() ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                    <a href="<?= base_url('/master/update_ukuran/'.$u->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                         <i class="fa fa-edit"></i> Edit Data
                                                     </a>
-                                                    <a href="<?= base_url() ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                    <a href="<?= base_url('/master/delete_ukuran/'.$u->id) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
                                                         <i class="fa fa-trash"></i> Delete Data
                                                     </a>
                                                 </div>
