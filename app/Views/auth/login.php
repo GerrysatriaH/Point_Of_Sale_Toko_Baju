@@ -15,14 +15,14 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action="<?= base_url(); ?>/login/process" method="POST" id="create-form">
+                    <form action="<?= base_url('auth/auth_login'); ?>" method="POST" id="create-form">
                         <div class="form-group my-4">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <label for="Username">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Masukkan Username" required>
                         </div>
                         <div class="form-group my-4">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input type="password" name="password" class="form-control" placeholder="Masukkan Username" required>
                         </div>
                         <div class="form-group my-4">
                             <button class="btn btn-primary bg-gradient">Login</button>
@@ -33,7 +33,7 @@
 
             </div>
             <div class="text-center mt-2">
-                Belum punya akun? <a href="<?= base_url('register'); ?>">Silakan daftar.</a>
+                Belum punya akun? <a href="<?= base_url('auth/register'); ?>">Silakan daftar.</a>
             </div>
         </div>
     </div>
