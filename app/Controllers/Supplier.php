@@ -16,7 +16,7 @@ class Supplier extends BaseController{
 
     public function index(){
 
-        $this->data['title'] = "Daftar Supplier Baju";
+        $this->data['title'] = "Supplier";
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
@@ -44,7 +44,7 @@ class Supplier extends BaseController{
                 'url' => base_url('supplier')
             ),
             array(
-                'title' => 'Create Data'
+                'title' => 'Tambah Data Supplier'
             )
         );
 
@@ -64,7 +64,7 @@ class Supplier extends BaseController{
                 'url' => base_url('supplier')
             ),
             array(
-                'title' => 'Update Data'
+                'title' => 'Ubah Data Supplier'
             )
         );
 

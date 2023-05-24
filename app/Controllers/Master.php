@@ -37,26 +37,8 @@ class Master extends BaseController{
         return view('master/kategori/index', $this->data);
     }
 
-    public function create_kategori(){
-        $this->data['title'] = 'Tambah Kategori Produk';
-        $this->data['breadcrumbs'] = array(
-            array(
-                'title' => 'Dashboard',
-                'url' => base_url()
-            ),
-            array(
-                'title' => 'Kategori Produk',
-                'url' => base_url('kategori')
-            ),
-            array(
-                'title' => 'Tambah Kategori Produk'
-            )
-        );
-        return view('master/kategori/create', $this->data);
-    }
-
     public function update_kategori($id=''){
-        $this->data['title'] = 'Edit Kategori Produk';
+        $this->data['title'] = 'Ubah Kategori Produk';
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
@@ -67,7 +49,7 @@ class Master extends BaseController{
                 'url' => base_url('kategori')
             ),
             array(
-                'title' => 'Edit Kategori Produk'
+                'title' => 'Ubah Kategori Produk'
             )
         );
 
@@ -124,26 +106,8 @@ class Master extends BaseController{
         return view('master/ukuran/index', $this->data);
     }
 
-    public function create_ukuran(){
-        $this->data['title'] = 'Tambah Ukuran Produk';
-        $this->data['breadcrumbs'] = array(
-            array(
-                'title' => 'Dashboard',
-                'url' => base_url()
-            ),
-            array(
-                'title' => 'Ukuran Produk',
-                'url' => base_url('ukuran')
-            ),
-            array(
-                'title' => 'Tambah Ukuran Produk'
-            )
-        );
-        return view('master/ukuran/create', $this->data);
-    }
-
     public function update_ukuran($id=''){
-        $this->data['title'] = 'Edit Ukuran Produk';
+        $this->data['title'] = 'Ubah Ukuran Produk';
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
@@ -154,7 +118,7 @@ class Master extends BaseController{
                 'url' => base_url('ukuran')
             ),
             array(
-                'title' => 'Edit Ukuran Produk'
+                'title' => 'Ubah Ukuran Produk'
             )
         );
 

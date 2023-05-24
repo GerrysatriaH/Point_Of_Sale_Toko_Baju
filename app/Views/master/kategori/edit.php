@@ -8,7 +8,12 @@
                 <input type="hidden" name="id" value="<?= isset($data['id']) ? $data['id'] : '' ?>">
                 <div class="form-group">
                     <label for="nama">Kategori</label>
-                    <input type="text" class="form-control" name="kategori" id="nama" value="<?= isset($data['kategori']) ? $data['kategori'] : '' ?>" required>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="kategori" id="kategori" placeholder="Masukan Kategori Baru" required value="<?= isset($data['kategori']) ? $data['kategori'] : '' ?>">
+                    </div>
                 </div>
             </div>
             <div class="card-footer">

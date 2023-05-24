@@ -17,7 +17,7 @@ class Pelanggan extends BaseController{
 
     public function index(){
 
-        $this->data['title'] = "Daftar List Pelanggan";
+        $this->data['title'] = "Pelanggan";
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
@@ -45,7 +45,7 @@ class Pelanggan extends BaseController{
                 'url' => base_url('pelanggan')
             ),
             array(
-                'title' => 'Create Data'
+                'title' => 'Tambah Data Pelanggan'
             )
         );
 
@@ -65,7 +65,7 @@ class Pelanggan extends BaseController{
                 'url' => base_url('pelanggan')
             ),
             array(
-                'title' => 'Update Data'
+                'title' => 'Ubah Data Pelanggan'
             )
         );
 

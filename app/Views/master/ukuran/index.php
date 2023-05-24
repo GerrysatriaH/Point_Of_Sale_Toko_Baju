@@ -1,22 +1,52 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
-<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">Tambah Data Ukuran</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="<?= base_url('master/submit_changes_ukuran') ?>" method="POST">
+                    <div class="form-group">
+                        <label for="ukuran">Ukuran : </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-arrows-alt-h"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukan Ukuran Baru" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Ukuran</h3>
+                    </div>
                     <div class="card-body">
-                        <a href="<?= base_url('/master/create_ukuran') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
                         <table class="table table-bordered table-striped">
                             <colgroup>
                                 <col width="10%">
                                 <col width="40%">
                                 <col width="40%">
                             </colgroup>
-                            <thead>
-                                <tr class="text-center">
+                            <thead class="bg-secondary">
+                                <tr>
                                     <th>#</th>
                                     <th>Ukuran</th>
                                     <th>Aksi</th>
@@ -28,9 +58,9 @@
                                 ?>
                                     <?php foreach($ukuran as $u) : ?>
                                         <tr>
-                                            <td class="text-center"><?= $i++; ?></td>
-                                            <td class="text-center"><?= $u->ukuran ?></td>
-                                            <td class="align-middle text-center">
+                                            <td><?= $i++; ?></td>
+                                            <td><?= $u->ukuran ?></td>
+                                            <td>
                                                 <div class="btn-group btn-group-sm">
                                                     <a href="<?= base_url('/master/update_ukuran/'.$u->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                         <i class="fa fa-edit"></i> Edit Data

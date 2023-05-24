@@ -14,7 +14,7 @@
                 <img src="/assets/images/avatar.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">Super Admin</a>
             </div>
         </div>
 
@@ -82,11 +82,11 @@
                     </ul>
                 </li>
                 <li class="nav-header">Administrator</li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <p><i class="nav-icon fas fa-user"></i> Profil</p>
                     </a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-users"></i> 

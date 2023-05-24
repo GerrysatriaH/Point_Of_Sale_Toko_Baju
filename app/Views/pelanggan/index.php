@@ -7,6 +7,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Pelanggan</h3>
+                    </div>
                     <div class="card-body">
                         <a href="<?= base_url('pelanggan/create') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
                         <table class="table table-bordered table-striped">
@@ -18,13 +21,13 @@
                                 <col width="15%">
                                 <col width="20%">
                             </colgroup>
-                            <thead>
-                                <tr class="text-center">
+                            <thead class="bg-secondary">
+                                <tr>
                                     <th>#</th>
-                                    <th>Nama Pelanggan</th>
+                                    <th>Nama</th>
+                                    <th>No.Telp/WA</th>
+                                    <th>Email</th>
                                     <th>Tipe</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>No.Telp</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -34,12 +37,12 @@
                                 ?>
                                     <?php foreach($pelanggan as $p) : ?>
                                         <tr>
-                                            <td class="text-center"><?= $i++; ?></td>
-                                            <td class="text-center"><?= $p->nama ?></td>
-                                            <td class="text-center"><?= $p->tipe ?></td>
-                                            <td class="text-center"><?= $p->gender ?></td>
-                                            <td class="text-center"><?= $p->no_telp ?></td>
-                                            <td class="align-middle text-center">
+                                            <td><?= $i++; ?></td>
+                                            <td><?= $p->nama ?></td>
+                                            <td><?= $p->no_telp ?></td>
+                                            <td><?= $p->email ?></td>
+                                            <td><?= $p->tipe ?></td>
+                                            <td>
                                                 <div class="btn-group btn-group-sm">
                                                     <a href="<?= base_url('pelanggan/update/'.$p->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                         <i class="fa fa-edit"></i> Edit Data

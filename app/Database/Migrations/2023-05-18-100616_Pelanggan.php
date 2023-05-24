@@ -19,22 +19,18 @@ class Pelanggan extends Migration {
                 'type'	        => 'VARCHAR', 
                 'constraint'    => 50
             ],
-			'gender'    => [
-                'type'	        => 'VARCHAR', 
-                'constraint'	=> 2
-            ],
-			'tipe'   => [
-                'type'          => 'ENUM', 
-                'constraint'     => ['umum', 'member'],
-                'default'       => 'umum'
-            ],
 			'no_telp'    => [
                 'type'          => 'VARCHAR', 
                 'constraint'	=> 20
             ],
-			'alamat'    => [
+            'email'    => [
                 'type'          => 'VARCHAR', 
-                'constraint'	=> 100
+                'constraint'	=> 50
+            ],
+			'tipe'   => [
+                'type'          => 'ENUM', 
+                'constraint'     => ['Umum', 'Membership'],
+                'default'       => 'Umum'
             ],
 			'created_at datetime default current_timestamp',
 			'updated_at datetime default current_timestamp on update current_timestamp'
@@ -51,4 +47,3 @@ class Pelanggan extends Migration {
 		$this->forge->dropTable('pelanggan', true);
 	}
 }
-

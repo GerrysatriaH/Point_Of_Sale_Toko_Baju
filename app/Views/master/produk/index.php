@@ -7,15 +7,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Produk</h3>
+                    </div>
                     <div class="card-body">
-                        <a href="<?= base_url('/master/create_produk') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
-                        <table class="table table-bordered">
-                            <thead>
+                        <a href="<?= base_url('master/create_produk') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
+                        <table class="table table-bordered table-bordered">
+                            <thead class="bg-secondary">
                                 <tr>
-                                    <th style="width: 10px">#</th>
+                                    <th>#</th>
                                     <th>Task</th>
                                     <th>Progress</th>
-                                    <th style="width: 40px">Label</th>
+                                    <th>Label</th>
                                 </tr>
                             </thead>
                             <tbody>

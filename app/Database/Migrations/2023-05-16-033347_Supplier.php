@@ -25,6 +25,10 @@ class Supplier extends Migration {
                 'type'          => 'VARCHAR', 
                 'constraint'    => 20
             ],
+			'email'      => [
+                'type'          => 'VARCHAR', 
+                'constraint'    => 50
+            ],
 			'alamat'    => [
                 'type'          => 'VARCHAR', 
                 'constraint'    => 100
