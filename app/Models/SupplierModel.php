@@ -10,5 +10,5 @@ class SupplierModel extends Model {
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     
-    protected $allowedFields = ['role'];   
+    protected $allowedFields = ['nama', 'no_telp', 'alamat'];   
 }

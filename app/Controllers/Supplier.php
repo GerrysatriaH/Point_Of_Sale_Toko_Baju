@@ -2,12 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Models\SupplierModel;
+
 class Supplier extends BaseController{
     protected $data;
 
+    protected $supplier_model;
+
+    public function __construct() {
+
+        $this->supplier_model = New SupplierModel();
+    }
+
     public function index(){
 
-        $this->data['title'] = "Daftar Suplier Baju";
+        $this->data['title'] = "Daftar Supplier Baju";
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
@@ -18,6 +27,7 @@ class Supplier extends BaseController{
             )
         );
 
+        $this->data['supplier'] = $this->supplier_model->orderBy('id ASC')->select('*')->get()->getResult();
         return view('supplier/index', $this->data);
     }
 
@@ -41,7 +51,7 @@ class Supplier extends BaseController{
         return view('supplier/create', $this->data);
     }
 
-    public function edit(){
+    public function update($id = ''){
 
         $this->data['title'] = "Ubah Data Supplier";
         $this->data['breadcrumbs'] = array(
@@ -54,10 +64,45 @@ class Supplier extends BaseController{
                 'url' => base_url('supplier')
             ),
             array(
-                'title' => 'Edit Data'
+                'title' => 'Update Data'
             )
         );
 
+        if(empty($id)){
+            return redirect()->to('supplier');
+        }
+        $this->data['data'] = $this->supplier_model->select('*')->where(['id'=>$id])->first();
         return view('supplier/edit',$this->data);
+    }
+
+    public function submit_changes_supplier(){
+        $this->data['request'] = $this->request;
+        $post = [
+            'nama'      => $this->request->getPost('nama'),
+            'no_telp'   => $this->request->getPost('no_telp'),
+            'alamat'    => $this->request->getPost('alamat')
+        ];
+
+        if(!empty($this->request->getPost('id'))) {
+            $save = $this->supplier_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
+        } else {
+            $save = $this->supplier_model->insert($post);
+        }
+
+        if($save){
+            return redirect()->to('supplier');
+        } else {
+            return redirect()->to('supplier');
+        }
+    }
+
+    public function delete($id=''){
+        if(empty($id)){
+            return redirect()->to('supplier');
+        }
+        $delete = $this->supplier_model->delete($id);
+        if($delete){
+            return redirect()->to('supplier');
+        }
     }
 }

@@ -90,7 +90,7 @@ class Master extends Migration {
                 'constraint'    => 11, 
                 'unsigned'      => true
             ],
-			'id_pemasok'    => [
+			'id_supplier'    => [
                 'type'          => 'INT', 
                 'constraint'    => 11, 
                 'unsigned'      => true
@@ -109,13 +109,13 @@ class Master extends Migration {
 			'updated_at datetime default current_timestamp on update current_timestamp'
 		]);
 
-		$this->forge->addKey('id', true)->addKey(['id_kategori', 'id_ukuran', 'id_pemasok'])->addUniqueKey('barcode');
+		$this->forge->addKey('id', true)->addKey(['id_kategori', 'id_ukuran', 'id_supplier'])->addUniqueKey('barcode');
 
 		$this->forge->addForeignKey('id_kategori', 'kategori', 'id', 'cascade', 'restrict');
 		$this->forge->addForeignKey('id_ukuran', 'ukuran', 'id', 'cascade', 'restrict');
-		$this->forge->addForeignKey('id_pemasok', 'pemasok', 'id', 'cascade', 'restrict');
+		$this->forge->addForeignKey('id_supplier', 'supplier', 'id', 'cascade', 'restrict');
 
-		$this->forge->createTable('tb_produk', true);
+		$this->forge->createTable('produk', true);
 	}
 
 	//--------------------------------------------------------------------
