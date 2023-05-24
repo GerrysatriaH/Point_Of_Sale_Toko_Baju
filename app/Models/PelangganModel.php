@@ -10,5 +10,5 @@ class PelangganModel extends Model {
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
 
-    protected $allowedFields = ['nama, gender, tipe, alamat'];
+    protected $allowedFields = ['nama', 'gender', 'tipe', 'no_telp', 'alamat'];
 }

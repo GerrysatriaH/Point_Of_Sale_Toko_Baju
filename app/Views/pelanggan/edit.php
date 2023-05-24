@@ -3,28 +3,38 @@
 
 <div class="container-fluid">
     <div class="card">
-        <form>
+        <form action="<?= base_url('/pelanggan/submit_changes_pelanggan') ?>" method="post">
             <div class="card-body">
+                <input type="hidden" name="id" value="<?= isset($data['id']) ? $data['id'] : '' ?>">
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required>
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required value="<?= isset($data['nama']) ? $data['nama'] : '' ?>">
                 </div>
                 <div class="form-group">
-                    <p class="text-bold">Gender</p>
-                    <label for="laki-laki">
-                        <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki" required> Laki-laki
-                    </label>
-                    <label for="perempuan" class="px-4">
-                        <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" required> Perempuan
-                    </label>
+                    <label for="gender">Jenis Kelamin</label><br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="gender" value="L" <?= isset($data['gender']) && $data['gender'] == "L" ? 'checked' : ''; ?>>
+                        <label class="form-check-label" for="lakilaki">Laki-laki</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="gender" value="P" <?= isset($data['gender']) && $data['gender'] == "P" ? 'checked' : ''; ?>>
+                        <label class="form-check-label" for="perempuan">Perempuan</label>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="nama">Tipe</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+                    <label for="nama">Tipe Pelanggan</label>
+                    <select name="tipe" id="tipe" class="form-control">
+                        <option value="umum" <?= isset($data['tipe']) && $data['tipe'] == "umum" ? 'selected' : ''; ?>>Umum</option>
+                        <option value="member" <?= isset($data['tipe']) && $data['tipe'] == "member" ? 'selected' : ''; ?>>Membership</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nama">No.Telp/WA</label>
+                    <input type="number" class="form-control" name="no_telp" id="no_telp" placeholder="Masukkan Nomor Telepon" required value="<?= isset($data['no_telp']) ? $data['no_telp'] : '' ?>">
                 </div>
                 <div class="form-group">
                     <label for="nama">Alamat</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukkan Alamat" required value="<?= isset($data['alamat']) ? $data['alamat'] : '' ?>">
                 </div>
             </div>
             <div class="card-footer">
