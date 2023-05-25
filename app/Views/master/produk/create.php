@@ -3,28 +3,50 @@
 
 <div class="container-fluid">
     <div class="card">
-        <form>
+        <form action="<?= base_url('master/submit_changes_produk') ?>" method="post">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required>
+                    <label for="nama">Kode Produk : </label>
+                    <input type="text" class="form-control" name="kode_produk" id="kode_produk" placeholder="Masukan Kode Produk" required>
                 </div>
                 <div class="form-group">
-                    <p class="text-bold">Gender</p>
-                    <label for="laki-laki">
-                        <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki" required> Laki-laki
-                    </label>
-                    <label for="perempuan" class="px-4">
-                        <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" required> Perempuan
-                    </label>
+                    <label for="nama">Nama Produk : </label>
+                    <input type="text" class="form-control" name="nama_produk" id="nama_produk" placeholder="Masukan Nama Produk" required>
                 </div>
                 <div class="form-group">
-                    <label for="nama">Tipe</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+                    <label for="kategori">Kategori:</label>
+                    <select class="form-control select2" name="kategori" id="kategori">
+                        <option disabled selected hidden>Pilih Kategori</option>
+                        <?php foreach($kategori as $k){?>
+                            <option value="<?= $k->id; ?>"><?= $k->kategori; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="nama">Alamat</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+                    <label for="ukuran">Ukuran : </label>
+                    <select class="form-control select2" name="ukuran" id="ukuran">
+                        <option disabled selected hidden>Pilih Ukuran</option>
+                        <?php foreach($ukuran as $u){?>
+                            <option value="<?php echo $u->id; ?>"><?php echo $u->ukuran; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="supplier">Supplier : </label>
+                    <select class="form-control select2" name="supplier" id="supplier">
+                        <option disabled selected hidden>Pilih Supplier</option>
+                        <?php foreach($supplier as $s){?>
+                            <option value="<?php echo $s->id; ?>"><?php echo $s->nama; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="harga">Harga Produk : </label>
+                    <input type="number" class="form-control" name="harga" id="harga" placeholder="Masukan Harga Produk" required>
+                </div>
+                <div class="form-group">
+                    <label for="stok">Stok Produk : </label>
+                    <input type="number" class="form-control" name="stok" id="stok" placeholder="Masukan Stok Produk" required>
                 </div>
             </div>
             <div class="card-footer">

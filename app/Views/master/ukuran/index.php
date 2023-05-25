@@ -23,7 +23,7 @@
                             <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukan Ukuran Baru" required>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data</button>
+                    <button type="submit" class="btn btn-success mt-3"><i class="fas fa-plus"></i> Tambah Data</button>
                 </form>
             </div>
         </div>

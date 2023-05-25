@@ -68,4 +68,8 @@ class Auth extends BaseController {
         $password = $this->request->getVar('password');
         
     }
+
+    public function logout(){
+        return redirect()->to(base_url('auth/login'));
+    }
 }

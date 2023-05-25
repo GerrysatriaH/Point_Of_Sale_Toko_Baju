@@ -72,11 +72,11 @@ class Master extends Migration {
                 'unsigned'          => true, 
                 'auto_increment'    => true
             ],
-			'barcode'	    => [
+			'kode_produk'	    => [
                 'type'          => 'VARCHAR', 
-                'constraint'	=> 50
+                'constraint'	=> 50,
             ],
-			'nama_product'	=> [
+			'nama_produk'	=> [
                 'type'          => 'VARCHAR', 
                 'constraint'	=> 100
             ],
@@ -109,7 +109,7 @@ class Master extends Migration {
 			'updated_at datetime default current_timestamp on update current_timestamp'
 		]);
 
-		$this->forge->addKey('id', true)->addKey(['id_kategori', 'id_ukuran', 'id_supplier'])->addUniqueKey('barcode');
+		$this->forge->addKey('id', true)->addKey(['id_kategori', 'id_ukuran', 'id_supplier'])->addUniqueKey('kode_produk');
 
 		$this->forge->addForeignKey('id_kategori', 'kategori', 'id', 'cascade', 'restrict');
 		$this->forge->addForeignKey('id_ukuran', 'ukuran', 'id', 'cascade', 'restrict');

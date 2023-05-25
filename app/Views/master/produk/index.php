@@ -16,22 +16,39 @@
                             <thead class="bg-secondary">
                                 <tr>
                                     <th>#</th>
-                                    <th>Task</th>
-                                    <th>Progress</th>
-                                    <th>Label</th>
+                                    <th>Kode</th>
+                                    <th>Nama</th>
+                                    <th>Kategori</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Update software</td>
-                                    <td>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-danger">55%</span></td>
-                                </tr>
+                                <?php if(count($produk) > 0): 
+                                        $i = 1;
+                                ?>
+                                    <?php foreach($produk as $pr) : ?>
+                                        <tr>
+                                            <td><?= $i++; ?></td>
+                                            <td><?= $pr->kode_produk ?></td>
+                                            <td><?= $pr->nama_produk ?></td>
+                                            <td><?= $pr->kategori ?></td>
+                                            <td><?= $pr->harga ?></td>
+                                            <td><?= $pr->stok ?></td>
+                                            <td>
+                                                <div class="btn-group btn-group-sm">
+                                                    <a href="<?= base_url('master/update_produk/'.$pr->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                        <i class="fa fa-edit"></i> Edit Data
+                                                    </a>
+                                                    <a href="<?= base_url('master/delete_produk/'.$pr->id) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                        <i class="fa fa-trash"></i> Delete Data
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>

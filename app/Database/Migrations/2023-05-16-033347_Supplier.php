@@ -39,6 +39,27 @@ class Supplier extends Migration {
 
 		$this->forge->addKey('id', true);
 		$this->forge->createTable('supplier', true);
+
+		$this->db->table('supplier')->insertBatch([
+            [
+                'nama'  	=> 'FashionEmporium',
+                'no_telp' 	=> '081213141516',
+                'email'  	=> 'fashionemp@gmail.com',
+                'alamat'    => 'Jl. Raya Mode No. 123'
+            ],
+            [
+                'nama'  	=> 'GarmentGuru',
+                'no_telp'   => '082223242526',
+                'email' 	=> 'garmeng@gmail.com',
+                'alamat'    => 'Jl. Pakaian Sejati No. 456'
+            ],
+            [
+                'nama'  	=> 'StyleMakers',
+                'no_telp'   => '083132343536',
+                'email'  	=> 'stylem@gmail.com',
+                'alamat'    => 'Jl. Kreativitas Fashion No. 789'
+            ],
+        ]);
 	}
 
 	//--------------------------------------------------------------------
