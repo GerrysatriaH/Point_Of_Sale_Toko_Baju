@@ -76,6 +76,7 @@ class Supplier extends BaseController{
     }
 
     public function submit_changes_supplier(){
+        
         $this->data['request'] = $this->request;
         $post = [
             'nama'      => $this->request->getPost('nama'),

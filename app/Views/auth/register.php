@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="text-center mt-2">
-                Sudah punya akun? <a href="<?= base_url('login'); ?>">Silakan login.</a>
+                Sudah punya akun? <a href="<?= base_url('auth/login'); ?>">Silakan login.</a>
             </div>
         </div>
     </div>

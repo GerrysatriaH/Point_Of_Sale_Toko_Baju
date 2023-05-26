@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-    <i class="fab fa-cotton-bureau ml-3"></i> 
+        <i class="fab fa-cotton-bureau ml-3"></i> 
         <span class="brand-text font-weight-semibold px-3">Pos Toko Baju</span>
     </a>
 
@@ -64,22 +64,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= base_url('transaksi') ?>" class="nav-link">
                         <i class="nav-icon fas fa-store"></i>
-                        <p> Transaksi <i class="right fas fa-angle-left"></i></p>
+                        <p> Transaksi</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('transaksi/penjualan') ?>" class="nav-link">
-                                <p><i class="nav-icon fas fa-shopping-cart"></i> Penjualan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('transaksi/invoice') ?>" class="nav-link">   
-                                <p><i class="nav-icon fas fa-file-invoice-dollar"></i> Invoice</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-header">Administrator</li>
                 <li class="nav-item">
@@ -88,7 +76,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= base_url('user/user_manage') ?>" class="nav-link">
                         <i class="nav-icon fas fa-users"></i> 
                         <p>Pengguna</p>
                     </a>

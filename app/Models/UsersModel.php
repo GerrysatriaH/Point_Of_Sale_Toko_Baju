@@ -12,7 +12,7 @@ class UsersModel extends Model {
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
 
-    protected $allowedFields = ['username', 'email', 'password', 'nama', 'alamat', 'role_id', 'avatar', 'status'];
+    protected $allowedFields = ['username', 'email', 'password', 'nama', 'alamat', 'role_id', 'status'];
 
     protected $rules = [
         'email'     => 'required|is_unique[users.email]',

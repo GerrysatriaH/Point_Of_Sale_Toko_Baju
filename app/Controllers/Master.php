@@ -210,6 +210,7 @@ class Master extends BaseController{
         return view('master/produk/create', $this->data);
     }
 
+    // in dev
     public function read_produk(){
         $this->data['title'] = 'Detail Produk';
         $this->data['breadcrumbs'] = array(

@@ -43,7 +43,8 @@ class Users extends Migration {
             ],
 			'email'			=> [
                 'type'          => 'VARCHAR', 
-                'constraint'    => 50
+                'constraint'    => 50,
+                'null'          => true
             ],
 			'username'		=> [
                 'type'          => 'VARCHAR', 
@@ -67,7 +68,8 @@ class Users extends Migration {
 			'status'		=> [
                 'type'          => 'ENUM', 
                 'constraint'     => ['aktif', 'non-aktif'],
-                'default'       => 'aktif'
+                'default'       => 'aktif',
+                'null' => false
             ],
 			'role_id'		=> [
                 'type'          => 'INT', 

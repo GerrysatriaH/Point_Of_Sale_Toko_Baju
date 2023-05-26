@@ -33,32 +33,33 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-$routes->get('/', 'Dashboard::index');
+$routes->add('/', 'Dashboard::index');
 
 // Dashboard
-$routes->get('/dashboard', 'Dashboard::index');
-$routes->get('/dashboard/(:any)', 'Dashboard::$1');
-$routes->post('/dashboard/(:any)', 'Dashboard::$1');
+$routes->add('/dashboard', 'Dashboard::index');
+$routes->add('/dashboard/(:any)', 'Dashboard::$1');
 
 // Register, Login & Logout
-$routes->get('/login', 'Auth::login');
-$routes->get('/register', 'Auth::register');
-$routes->get('/auth/(:any)', 'Auth::$1');
-$routes->post('/auth/(:any)', 'Auth::$1');
+$routes->add('/auth/(:any)', 'Auth::$1');
 
 // Pelanggan
-$routes->get('/pelanggan', 'Pelanggan::index');
-$routes->get('/pelanggan/(:any)', 'Pelanggan::$1');
-$routes->post('/pelanggan/(:any)', 'Pelanggan::$1');
+$routes->add('/pelanggan', 'Pelanggan::index');
+$routes->add('/pelanggan/(:any)', 'Pelanggan::$1');
 
 // Supplier
-$routes->get('/supplier', 'Supplier::index');
-$routes->get('/supplier/(:any)', 'Supplier::$1');
-$routes->post('/supplier/(:any)', 'Supplier::$1');
+$routes->add('/supplier', 'Supplier::index');
+$routes->add('/supplier/(:any)', 'Supplier::$1');
 
 // Master
-$routes->get('/master/(:any)', 'Master::$1');
-$routes->post('/master/(:any)', 'Master::$1');
+$routes->add('/master/(:any)', 'Master::$1');
+
+// User
+$routes->add('/user', 'User::index');
+$routes->add('/user/(:any)', 'User::$1');
+
+// Transaksi
+$routes->add('/transaksi', 'Transaksi::index');
+$routes->add('/transaksi/(:any)', 'Transaksi::$1');
 
 /*
  * --------------------------------------------------------------------
