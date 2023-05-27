@@ -20,8 +20,8 @@ class Pelanggan extends Migration {
                 'constraint'    => 20
             ],
 			'discount' => [
-				'type'       => 'DECIMAL',
-                'constraint' => '5,2',
+				'type'       => 'INT',
+                'constraint' => 11,
 			],
 			'created_at datetime default current_timestamp',
 			'updated_at datetime default current_timestamp on update current_timestamp'
@@ -33,11 +33,11 @@ class Pelanggan extends Migration {
 		$this->db->table('pelanggan')->insertBatch([
 			[
 				'tipe' 		=> 'Umum',
-				'discount' 	=> 0.0
+				'discount' 	=> 0
 			],
 			[
 				'tipe' 		=> 'Membership',
-				'discount' 	=> 10.0
+				'discount' 	=> 10
 			]
 		]);
 	}
