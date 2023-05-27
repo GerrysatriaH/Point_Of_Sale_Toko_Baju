@@ -59,7 +59,7 @@ class Master extends BaseController{
         );
 
         if(empty($id)){
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('error', 'Data Tidak Ditemukan');
         }
         $this->data['data'] = $this->category_model->select('*')->where(['id'=>$id])->first();
         return view('master/kategori/edit', $this->data);
@@ -77,19 +77,19 @@ class Master extends BaseController{
         }
 
         if($save){
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('success', 'Berhasil Memperbaharui Data');
         } else {
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('success', 'Berhasil Menambahkan Data');
         }
     }
 
     public function delete_kategori($id=''){
         if(empty($id)){
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('error', 'Gagal Menghapus Data');
         }
         $delete = $this->category_model->delete($id);
         if($delete){
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('success', 'Berhasil Menghapus Data');
         }
     }
 
@@ -128,7 +128,7 @@ class Master extends BaseController{
         );
 
         if(empty($id)){
-            return redirect()->to('master/ukuran');
+            return redirect()->to('master/ukuran')->with('error', 'Data Tidak Ditemukan');
         }
         $this->data['data'] = $this->size_model->select('*')->where(['id'=>$id])->first();
         return view('master/ukuran/edit', $this->data);
@@ -146,19 +146,19 @@ class Master extends BaseController{
         }
         
         if($save){
-            return redirect()->to('master/ukuran');
+            return redirect()->to('master/ukuran')->with('success', 'Berhasil Memperbaharui Data');
         } else {
-            return redirect()->to('master/ukuran');
+            return redirect()->to('master/ukuran')->with('success', 'Berhasil Menambahkan Data');
         }
     }
 
     public function delete_ukuran($id=''){
         if(empty($id)){
-            return redirect()->to('master/ukuran');
+            return redirect()->to('master/ukuran')->with('error', 'Gagal Menghapus Data');
         }
         $delete = $this->size_model->delete($id);
         if($delete){
-            return redirect()->to('master/ukuran');
+            return redirect()->to('master/ukuran')->with('success', 'Berhasil Menghapus Data');
         }
     }
 
@@ -244,6 +244,10 @@ class Master extends BaseController{
             )
         );
 
+        if(empty($id)){
+            return redirect()->to('master/produk')->with('error', 'Data Tidak Ditemukan');
+        }
+        
         $this->data['kategori'] = $this->category_model->orderBy('id ASC')->select('*')->get()->getResult();
         $this->data['ukuran'] = $this->size_model->orderBy('id ASC')->select('*')->get()->getResult();
         $this->data['supplier'] = $this->supplier_model->orderBy('id ASC')->select('*')->get()->getResult();
@@ -270,19 +274,19 @@ class Master extends BaseController{
         }
         
         if($save){
-            return redirect()->to('master/produk');
+            return redirect()->to('master/produk')->with('success', 'Berhasil Memperbaharui Data');
         } else {
-            return redirect()->to('master/produk');
+            return redirect()->to('master/produk')->with('success', 'Berhasil Menambahkan Data');
         }
     }
 
     public function delete_produk($id=''){
         if(empty($id)){
-            return redirect()->to('master/produk');
+            return redirect()->to('master/produk')->with('error', 'Gagal Menghapus Data');
         }
         $delete = $this->product_model->delete($id);
         if($delete){
-            return redirect()->to('master/produk');
+            return redirect()->to('master/produk')->with('success', 'Berhasil Menghapus Data');
         }
     }
 }

@@ -28,6 +28,12 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('pembayaran') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-money-check-alt"></i>
+                        <p> Pembayaran</p>
+                    </a>
+                </li>
                 <?php if(session()->get('role_id') == 1 || session()->get('role_id') == 2) { ?>
                     <li class="nav-item">
                         <a href="<?= base_url('pelanggan') ?>" class="nav-link">
@@ -49,28 +55,25 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="<?= base_url('master/produk') ?>" class="nav-link">
-                                    <p><i class="nav-icon fas fa-box"></i> Produk</p>
+                                    <i class="nav-icon fas fa-box"></i>
+                                    <p> Produk</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url('master/kategori') ?>" class="nav-link">    
-                                    <p><i class="nav-icon fas fa-tag"></i> Kategori</p>
+                                <a href="<?= base_url('master/kategori') ?>" class="nav-link"> 
+                                    <i class="nav-icon fas fa-tag"></i>   
+                                    <p> Kategori</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?= base_url('master/ukuran') ?>" class="nav-link">
-                                    <p><i class="nav-icon fas fa-arrows-alt-h"></i> Ukuran </p>
+                                    <i class="nav-icon fas fa-arrows-alt-h"></i>
+                                    <p> Ukuran </p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                <?php } ?> 
-                <li class="nav-item">
-                    <a href="<?= base_url('transaksi') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-store"></i>
-                        <p> Transaksi</p>
-                    </a>
-                </li>
+                <?php } ?>
                 <li class="nav-header">Administrator</li>
                 <li class="nav-item">
                     <a href="<?= base_url('user/profile') ?>" class="nav-link">

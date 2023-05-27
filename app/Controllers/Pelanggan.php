@@ -17,14 +17,14 @@ class Pelanggan extends BaseController{
 
     public function index(){
 
-        $this->data['title'] = "Pelanggan";
+        $this->data['title'] = "Tipe Pelanggan";
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
                 'url' => base_url()
             ),
             array(
-                'title' => 'Pelanggan'
+                'title' => 'Tipe Pelanggan'
             )
         );
 
@@ -34,7 +34,7 @@ class Pelanggan extends BaseController{
 
     public function create(){
 
-        $this->data['title'] = "Tambah Data Pelanggan";
+        $this->data['title'] = "Tambah Data Tipe Pelanggan";
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
@@ -45,7 +45,7 @@ class Pelanggan extends BaseController{
                 'url' => base_url('pelanggan')
             ),
             array(
-                'title' => 'Tambah Data Pelanggan'
+                'title' => 'Tambah Data'
             )
         );
 
@@ -54,7 +54,7 @@ class Pelanggan extends BaseController{
 
     public function update($id = ''){
 
-        $this->data['title'] = "Ubah Data Pelanggan";
+        $this->data['title'] = "Ubah Data Tipe Pelanggan";
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
@@ -70,7 +70,7 @@ class Pelanggan extends BaseController{
         );
 
         if(empty($id)){
-            return redirect()->to('pelanggan');
+            return redirect()->to('pelanggan')->with('error', 'Data Tidak Ditemukan');
         }
         $this->data['data'] = $this->customer_model->select('*')->where(['id'=>$id])->first();
         return view('pelanggan/edit', $this->data);
@@ -90,19 +90,19 @@ class Pelanggan extends BaseController{
         }
 
         if($save){
-            return redirect()->to('pelanggan');
+            return redirect()->to('pelanggan')->with('success', 'Berhasil Memperbaharui Data');
         } else {
-            return redirect()->to('pelanggan');
+            return redirect()->to('pelanggan')->with('success', 'Berhasil Menambahkan Data');
         }
     }
 
     public function delete($id=''){
         if(empty($id)){
-            return redirect()->to('pelanggan');
+            return redirect()->to('pelanggan')->with('error', 'Gagal Menghapus Data');
         }
         $delete = $this->customer_model->delete($id);
         if($delete){
-            return redirect()->to('pelanggan');
+            return redirect()->to('pelanggan')->with('success', 'Berhasil Menghapus Data');
         }
     }
 }

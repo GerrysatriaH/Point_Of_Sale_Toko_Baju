@@ -31,7 +31,7 @@ class Master extends Migration {
             ['kategori' => 'Baju'],
             ['kategori' => 'Celana'],
             ['kategori' => 'Gaun'],
-            ['kategori' => 'Seragam'],
+            ['kategori' => 'Jas'],
             ['kategori' => 'Jaket'],
             ['kategori' => 'Kemeja'],
         ]);
@@ -116,6 +116,63 @@ class Master extends Migration {
 		$this->forge->addForeignKey('id_supplier', 'supplier', 'id', 'cascade', 'restrict');
 
 		$this->forge->createTable('produk', true);
+
+        $this->db->table('produk')->insertBatch([
+            [
+                'kode_produk'   => 'KP01L',
+                'nama_produk'   => 'Kemeja Putih',
+                'id_kategori'   => '6',
+                'id_ukuran'     => '4',
+                'id_supplier'   => '2',
+                'harga'         => '199000',
+                'stok'          => '50'
+            ],
+            [
+                'kode_produk'   => 'KH02S',
+                'nama_produk'   => 'Kaos Hitam',
+                'id_kategori'   => '1',
+                'id_ukuran'     => '2',
+                'id_supplier'   => '3',
+                'harga'         => '99000',
+                'stok'          => '80'
+            ],
+            [
+                'kode_produk'   => 'SB03XL',
+                'nama_produk'   => 'Sweeter Biru',
+                'id_kategori'   => '5',
+                'id_ukuran'     => '5',
+                'id_supplier'   => '1',
+                'harga'         => '305000',
+                'stok'          => '60'
+            ],
+            [
+                'kode_produk'   => 'CJ04L',
+                'nama_produk'   => 'Celana Jeans',
+                'id_kategori'   => '2',
+                'id_ukuran'     => '4',
+                'id_supplier'   => '1',
+                'harga'         => '219000',
+                'stok'          => '30'
+            ],
+            [
+                'kode_produk'   => 'DM05X',
+                'nama_produk'   => 'Dress Merah',
+                'id_kategori'   => '3',
+                'id_ukuran'     => '4',
+                'id_supplier'   => '3',
+                'harga'         => '499000',
+                'stok'          => '30'
+            ],
+            [
+                'kode_produk'   => 'JM06M',
+                'nama_produk'   => 'Jas Merah',
+                'id_kategori'   => '4',
+                'id_ukuran'     => '5',
+                'id_supplier'   => '2',
+                'harga'         => '350000',
+                'stok'          => '40'
+            ]
+        ]);
 	}
 
 	//--------------------------------------------------------------------

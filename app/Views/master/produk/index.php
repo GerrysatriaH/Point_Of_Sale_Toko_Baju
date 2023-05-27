@@ -1,6 +1,8 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
+<?= $this->include('component/alert') ?>
+
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -13,6 +15,15 @@
                     <div class="card-body">
                         <a href="<?= base_url('master/create_produk') ?>" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
                         <table class="table table-bordered table-bordered">
+                            <colgroup>
+                                <col width="5%">
+                                <col width="10%">
+                                <col width="20%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="25%">
+                            </colgroup>
                             <thead class="bg-secondary">
                                 <tr>
                                     <th>#</th>

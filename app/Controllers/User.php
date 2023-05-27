@@ -83,6 +83,10 @@ class User extends BaseController{
             )
         );
 
+        if(empty($id)){
+            return redirect()->to('supplier')->with('error', 'Data Tidak Ditemukan');
+        }
+
         $this->data['data'] = $this->user_model->orderBy('id ASC')->select('*')->where(['id'=>$id])->first();
         $this->data['role'] = $this->role_model->orderBy('id ASC')->select('*')->get()->getResult();
 
@@ -103,9 +107,9 @@ class User extends BaseController{
         $save = $this->user_model->insert($post);
 
         if($save){
-            return redirect()->to('user/user_manage');
+            return redirect()->to('user/user_manage')->with('success', 'Berhasil Menambahkan Data');
         } else {
-            return redirect()->to('user/user_manage');
+            return redirect()->to('user/user_manage')->with('error', 'Gagal Menambahkan Data');
         }
     }
 
@@ -121,9 +125,19 @@ class User extends BaseController{
         $save = $this->user_model->where(['id'=> $id])->set($post)->update();
 
         if($save){
-            return redirect()->to('user/user_manage');
+            return redirect()->to('user/user_manage')->with('success', 'Berhasil Memperbaharui Data');
         } else {
-            return redirect()->to('user/user_manage');
+            return redirect()->to('user/user_manage')->with('error', 'Gagal Memperbaharui Data');
+        }
+    }
+
+    public function delete_user($id=''){
+        if(empty($id)){
+            return redirect()->to('user/user_manage')->with('error', 'Gagal Menghapus Data');
+        }
+        $delete = $this->user_model->delete($id);
+        if($delete){
+            return redirect()->to('user/user_manage')->with('success', 'Berhasil Menghapus Data');
         }
     }
 

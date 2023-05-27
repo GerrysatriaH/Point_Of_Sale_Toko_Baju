@@ -19,15 +19,13 @@ class userAuthFilter implements FilterInterface
         if (is_null(session()->get('logged_in')) && !in_array($request->uri->getPath(), $except)) {
             return redirect()
                 ->to(base_url('/auth/login'))
-                ->with('message', 'Silakan login terlebih dahulu!')
-                ->with('type', 'error');
+                ->with('error', 'Silakan login terlebih dahulu!');
         }
 
         if (!is_null(session()->get('logged_in')) && in_array($request->uri->getPath(), $except)) {
             return redirect()
                 ->back()
-                ->with('message', 'Anda sudah login.')
-                ->with('type', 'info');
+                ->with('success', 'Anda sudah login.');
         }
     }
  

@@ -1,6 +1,8 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
+<?= $this->include('component/alert') ?>
+
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">

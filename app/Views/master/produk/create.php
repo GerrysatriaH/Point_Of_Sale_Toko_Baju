@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="kategori">Kategori:</label>
-                    <select class="form-control select2" name="kategori" id="kategori">
+                    <select class="form-control select2" name="kategori" id="kategori" style="width: 100%;">
                         <option disabled selected hidden>Pilih Kategori</option>
                         <?php foreach(esc($kategori) as $k){?>
                             <option value="<?= esc($k->id); ?>"><?= esc($k->kategori); ?></option>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="ukuran">Ukuran : </label>
-                    <select class="form-control select2" name="ukuran" id="ukuran">
+                    <select class="form-control select2" name="ukuran" id="ukuran" style="width: 100%;">
                         <option disabled selected hidden>Pilih Ukuran</option>
                         <?php foreach(esc($ukuran) as $u){?>
                             <option value="<?= esc($u->id); ?>"><?= esc($u->ukuran); ?></option>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     <label for="supplier">Supplier : </label>
-                    <select class="form-control select2" name="supplier" id="supplier">
+                    <select class="form-control select2" name="supplier" id="supplier" style="width: 100%;">
                         <option disabled selected hidden>Pilih Supplier</option>
                         <?php foreach(esc($supplier) as $s){?>
                             <option value="<?= esc($s->id); ?>"><?= esc($s->nama); ?></option>

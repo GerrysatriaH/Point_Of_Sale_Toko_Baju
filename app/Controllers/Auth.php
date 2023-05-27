@@ -37,19 +37,19 @@ class Auth extends BaseController {
             if (!$password_check){
                 return redirect()->to(base_url('auth/login'))
                                  ->withInput()
-                                 ->with('error', 'Password Salah !');
+                                 ->with('error', 'Invalid Credential !');
             } else {
                 session()->set([
                     'nama'  => $data_user['nama'],
                     'role_id'   => $data_user['role_id'],
                     'logged_in' => true
                 ]);
-                return redirect()->to(base_url('/dashboard'));
+                return redirect()->to(base_url('/dashboard'))->with('success', 'Login Berhasil');
             }
         } else {
             return redirect()->to(base_url('auth/login'))
                              ->withInput()
-                             ->with('error', 'Username belum terdaftar !');
+                             ->with('error', 'Invalid Credential !');
         }
     }
 

@@ -7,34 +7,12 @@
             <div class="card-body">
                 <input type="hidden" name="id" value="<?= isset($data['id']) ? esc($data['id']) : '' ?>">
                 <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required value="<?= isset($data['nama']) ? esc($data['nama']) : '' ?>">
+                    <label for="tipe">Tipe : </label>
+                    <input type="text" class="form-control" name="tipe" id="tipe" placeholder="Masukkan Nama Tipe Pelanggan" required value="<?= isset($data['tipe']) ? esc($data['tipe']) : '' ?>">
                 </div>
                 <div class="form-group">
-                    <label for="gender">Jenis Kelamin</label><br/>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="gender" value="L" <?= isset($data['gender']) && $data['gender'] == "L" ? 'checked' : ''; ?>>
-                        <label class="form-check-label" for="lakilaki">Laki-laki</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="gender" value="P" <?= isset($data['gender']) && $data['gender'] == "P" ? 'checked' : ''; ?>>
-                        <label class="form-check-label" for="perempuan">Perempuan</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="nama">Tipe Pelanggan</label>
-                    <select name="tipe" id="tipe" class="form-control">
-                        <option value="umum" <?= isset($data['tipe']) && $data['tipe'] == "umum" ? 'selected' : ''; ?>>Umum</option>
-                        <option value="member" <?= isset($data['tipe']) && $data['tipe'] == "member" ? 'selected' : ''; ?>>Membership</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="nama">No.Telp/WA</label>
-                    <input type="number" class="form-control" name="no_telp" id="no_telp" placeholder="Masukkan Nomor Telepon" required value="<?= isset($data['no_telp']) ? esc($data['no_telp']) : '' ?>">
-                </div>
-                <div class="form-group">
-                    <label for="nama">Alamat</label>
-                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukkan Alamat" required value="<?= isset($data['alamat']) ? esc($data['alamat']) : '' ?>">
+                    <label for="nama">Penawaran Diskon : </label>
+                    <input type="number" step="0.01" min="0" class="form-control" name="discount" id="discount" placeholder="Masukkan Penawaran Discount" required value="<?= isset($data['discount']) ? esc($data['discount']) : '' ?>">
                 </div>
             </div>
             <div class="card-footer">

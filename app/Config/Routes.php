@@ -57,9 +57,9 @@ $routes->add('/master/(:any)', 'Master::$1');
 $routes->add('/user', 'User::index');
 $routes->add('/user/(:any)', 'User::$1');
 
-// Transaksi
-$routes->add('/transaksi', 'Transaksi::index');
-$routes->add('/transaksi/(:any)', 'Transaksi::$1');
+// Pembayaran
+$routes->add('/pembayaran', 'Pembayaran::index');
+$routes->add('/pembayaran/(:any)', 'Pembayaran::$1');
 
 /*
  * --------------------------------------------------------------------

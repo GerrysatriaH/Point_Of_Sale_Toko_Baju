@@ -1,6 +1,8 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
+<?= $this->include('component/alert') ?>
+
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -16,32 +18,26 @@
                             <colgroup>
                                 <col width="5%">
                                 <col width="20%">
-                                <col width="15%">
-                                <col width="15%">
-                                <col width="15%">
                                 <col width="20%">
+                                <col width="15%">
                             </colgroup>
                             <thead class="bg-secondary">
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama</th>
-                                    <th>No.Telp/WA</th>
-                                    <th>Email</th>
                                     <th>Tipe</th>
+                                    <th>Penawaran Diskon</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(count(esc($pelanggan)) > 0): 
+                                <?php if(count(esc($pelanggan)) > 0){
                                         $i = 1;
                                 ?>
                                     <?php foreach(esc($pelanggan) as $p) : ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td><?= esc($p->nama) ?></td>
-                                            <td><?= esc($p->no_telp) ?></td>
-                                            <td><?= esc($p->email) ?></td>
                                             <td><?= esc($p->tipe) ?></td>
+                                            <td><?= number_format(esc($p->discount)).' %' ?></td>
                                             <td>
                                                 <div class="btn-group btn-group-sm">
                                                     <a href="<?= base_url('pelanggan/update/'.esc($p->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
@@ -54,7 +50,11 @@
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
-                                <?php endif; ?>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td colspan="6" class="text-center">tidak ada data</td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

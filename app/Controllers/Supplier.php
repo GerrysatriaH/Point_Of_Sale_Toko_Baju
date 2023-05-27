@@ -69,7 +69,7 @@ class Supplier extends BaseController{
         );
 
         if(empty($id)){
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('error', 'Data Tidak Ditemukan');
         }
         $this->data['data'] = $this->supplier_model->select('*')->where(['id'=>$id])->first();
         return view('supplier/edit',$this->data);
@@ -91,19 +91,19 @@ class Supplier extends BaseController{
         }
 
         if($save){
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('success', 'Berhasil Memperbaharui Data');
         } else {
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('success', 'Berhasil Menambahkan Data');
         }
     }
 
     public function delete($id=''){
         if(empty($id)){
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('error', 'Gagal Menghapus Data');
         }
         $delete = $this->supplier_model->delete($id);
         if($delete){
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('success', 'Berhasil Menghapus Data');
         }
     }
 }
