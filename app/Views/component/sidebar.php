@@ -14,7 +14,7 @@
                 <img src="/assets/images/avatar.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Super Admin</a>
+                <a href="#" class="d-block"><?= session()->get('nama') ?></a>
             </div>
         </div>
 
@@ -28,41 +28,43 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('pelanggan') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Pelanggan</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('supplier') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-truck"></i> 
-                        <p>Supplier</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-box-open"></i>
-                        <p> Master <i class="right fas fa-angle-left"></i></p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('master/produk') ?>" class="nav-link">
-                                <p><i class="nav-icon fas fa-box"></i> Produk</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('master/kategori') ?>" class="nav-link">    
-                                <p><i class="nav-icon fas fa-tag"></i> Kategori</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('master/ukuran') ?>" class="nav-link">
-                                <p><i class="nav-icon fas fa-arrows-alt-h"></i> Ukuran </p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                <?php if(session()->get('role_id') == 1 || session()->get('role_id') == 2) { ?>
+                    <li class="nav-item">
+                        <a href="<?= base_url('pelanggan') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Pelanggan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url('supplier') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-truck"></i> 
+                            <p>Supplier</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-box-open"></i>
+                            <p> Master <i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url('master/produk') ?>" class="nav-link">
+                                    <p><i class="nav-icon fas fa-box"></i> Produk</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('master/kategori') ?>" class="nav-link">    
+                                    <p><i class="nav-icon fas fa-tag"></i> Kategori</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('master/ukuran') ?>" class="nav-link">
+                                    <p><i class="nav-icon fas fa-arrows-alt-h"></i> Ukuran </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } ?> 
                 <li class="nav-item">
                     <a href="<?= base_url('transaksi') ?>" class="nav-link">
                         <i class="nav-icon fas fa-store"></i>
@@ -71,16 +73,19 @@
                 </li>
                 <li class="nav-header">Administrator</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <p><i class="nav-icon fas fa-user"></i> Profil</p>
+                    <a href="<?= base_url('user/profile') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p> Profil</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('user/user_manage') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i> 
-                        <p>Pengguna</p>
-                    </a>
-                </li>
+                <?php if(session()->get('role_id') == 1) { ?>
+                    <li class="nav-item">
+                        <a href="<?= base_url('user/user_manage') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i> 
+                            <p>Pengguna</p>
+                        </a>
+                    </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a href="<?= base_url('auth/logout') ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i> 

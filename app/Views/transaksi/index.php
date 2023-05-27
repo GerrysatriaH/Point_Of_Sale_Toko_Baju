@@ -1,10 +1,10 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
-<div class="container-fluid">
+<div class="container-fluid px-3">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card card-primary card-outline">
+        <div class="col-md-6">
+            <div class="card card-outline">
                 <div class="card-body">
                     <div class="form-group row d-none">
                         <label for="tanggal" class="col-sm-3 col-form-label">Tanggal</label>
@@ -15,7 +15,7 @@
                     <div class="form-group row">
                         <label for="user" class="col-sm-3 col-form-label">Kasir</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="user" id="user" readonly value="">
+                            <input type="text" class="form-control" name="user" id="user" value="">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -31,12 +31,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-primary card-outline">
+        <div class="col-md-6">
+            <div class="card card-outline">
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="barcode" class="col-sm-3 col-form-label">Barcode</label>
-                        <div class="col-sm-9">
+                        <div class="col-sm-7">
                             <div class="input-group">
                                 <input type="hidden" id="iditem">
                                 <input type="hidden" id="nama">
@@ -50,30 +50,30 @@
                     <div class="form-group row">
                         <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                         <div class="col-sm-5">
-                            <input type="number" class="form-control" name="jumlah" id="jumlah" min="1" disabled>
+                            <input type="number" class="form-control" name="jumlah" id="jumlah" min="1">
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" id="tambah" class="btn btn-primary" disabled>Tambah</button>
+                            <button type="button" id="tambah" class="btn btn-primary">Tambah</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-primary card-outline">
+        <!-- <div class="col-md-4">
+            <div class="card card-outline">
                 <div class="card-body">
                     <div class="text-right">
                         <h4>Invoice : <span class="text-bold" id="invoice"></span></h4>
-                        <h1><span class="text-bold text-danger" id="tampilkan_total">0</span></h1>
+                        <h1 class="pb-3"><span class="text-bold text-danger" id="tampilkan_total">0</span></h1>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- .row -->
     <div class="row">
         <div class="col-lg-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-outline">
                 <div class="p-0 table-responsive">
                     <table class="table table-bordered table-striped" id="tabel-keranjang" width="100%">
                         <thead>
@@ -95,19 +95,13 @@
     </div>
     <!-- .row -->
     <div class="row">
-        <div class="col-md-3">
-            <div class="card card-primary card-outline">
+        <div class="col-md-4">
+            <div class="card card-outline">
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="sub_total" class="col-sm-5 col-form-label">Sub Total</label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control text-right" name="sub_total" id="sub_total" value="0" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="diskon" class="col-sm-5 col-form-label">Dis Total (%)</label>
-                        <div class="col-sm-7">
-                            <input type="number" class="form-control text-right" name="diskon" id="diskon" autocomplete="off" value="0" min="0" disabled>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -120,8 +114,8 @@
             </div>
         </div>
         <!-- .col-md-3 -->
-        <div class="col-md-3">
-            <div class="card card-primary card-outline">
+        <div class="col-md-4">
+            <div class="card card-outline">
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="tunai" class="col-sm-5 col-form-label">Tunai</label>
@@ -139,22 +133,11 @@
             </div>
         </div>
         <!-- .col-md-3 -->
-        <div class="col-md-3">
-            <div class="card card-primary card-outline">
+        <div class="col-md-4">
+            <div class="card card-outline">
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="catatan">Catatan</label>
-                        <textarea class="form-control" name="catatan" id="catatan" rows="3" disabled></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- .col-md-3 -->
-        <div class="col-md-3">
-            <div class="card card-primary card-outline">
-                <div class="card-body">
-                    <p><button class="btn btn-warning" id="batal" disabled><i class="fa fa-refresh"></i> Batal</button></p>
-                    <p><button class="btn btn-success" id="bayar" disabled><i class="fa fa-paper-plane"></i> Proses Pembayaran</button></p>
+                    <p><button class="btn btn-success" id="bayar"><i class="fa fa-paper-plane"></i> Proses Pembayaran</button></p>
+                    <p><button class="btn btn-warning" id="batal"><i class="fa fa-refresh"></i><span class="px-6>Batal</span></button></p>
                 </div>
             </div>
         </div>
@@ -216,10 +199,8 @@
                 </div>
             </div>
         </div>
-        <!-- /.modal-content -->
         <?php //form_close();?>
     </div>
-    <!-- /.modal-dialog -->
 </div>
 
 <?= $this->endSection() ?>

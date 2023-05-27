@@ -11,7 +11,7 @@
 
                     <?php if (!empty(session()->getFlashdata('error'))) : ?>
                         <div class="alert alert-danger" role="alert">
-                            <?php echo session()->getFlashdata('error'); ?>
+                            <?= session()->getFlashdata('error'); ?>
                         </div>
                     <?php endif; ?>
 

@@ -32,22 +32,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(count($users) > 0): 
+                                <?php if(count(esc($users)) > 0): 
                                         $i = 1;
                                 ?>
-                                    <?php foreach($users as $us): ?>
+                                    <?php foreach(esc($users) as $us): ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td><?= $us->username ?></td>
-                                            <td><?= $us->email ?></td>
-                                            <td><?= $us->status ?></td>
-                                            <td><?= $us->role ?></td>
+                                            <td><?= esc($us->username) ?></td>
+                                            <td><?= esc($us->email) ?></td>
+                                            <td><?= esc($us->status) ?></td>
+                                            <td><?= esc($us->role) ?></td>
                                             <td>
                                                 <div class="btn-group btn-group-sm">
-                                                    <a href="<?= base_url('user/update_user/'.$us->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                    <a href="<?= base_url('user/update_user/'.esc($us->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                         <i class="fa fa-edit"></i> Edit Data
                                                     </a>
-                                                    <a href="<?= base_url('user/delete_user/'.$us->id) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                    <a href="<?= base_url('user/delete_user/'.esc($us->id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
                                                         <i class="fa fa-trash"></i> Delete Data
                                                     </a>
                                                 </div>

@@ -79,11 +79,8 @@ class Pelanggan extends BaseController{
     public function submit_changes_pelanggan(){
         $this->data['request'] = $this->request;
         $post = [
-            'nama'      => $this->request->getPost('nama'),
-            'gender'    => $this->request->getPost('gender'),
             'tipe'      => $this->request->getPost('tipe'),
-            'no_telp'   => $this->request->getPost('no_telp'),
-            'alamat'    => $this->request->getPost('alamat')
+            'discount'  => $this->request->getPost('discount')
         ];
 
         if(!empty($this->request->getPost('id'))) {

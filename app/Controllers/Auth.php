@@ -27,8 +27,8 @@ class Auth extends BaseController {
         $rules = $this->userModel->rules;
         $message_error = $this->userModel->rulesValidation;
 
-        $username = $this->request->getVar('username');
-        $password = $this->request->getVar('password');
+        $username = esc($this->request->getVar('username'));
+        $password = esc($this->request->getVar('password'));
         
         $data_user = $this->userModel->where('username', $username)->first();
 
@@ -40,7 +40,7 @@ class Auth extends BaseController {
                                  ->with('error', 'Password Salah !');
             } else {
                 session()->set([
-                    'username'  => $data_user['username'],
+                    'nama'  => $data_user['nama'],
                     'role_id'   => $data_user['role_id'],
                     'logged_in' => true
                 ]);

@@ -21,8 +21,8 @@
                     <label for="role">Role : </label>
                     <select class="form-control" name="role" id="role">
                         <option disabled selected hidden>Pilih Role</option>
-                        <?php foreach($role as $r){?>
-                            <option value="<?= $r->id; ?>"><?= $r->role; ?></option>
+                        <?php foreach(esc($role) as $r){?>
+                            <option value="<?= esc($r->id); ?>"><?= esc($r->role); ?></option>
                         <?php } ?>
                     </select>
                 </div>

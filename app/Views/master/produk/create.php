@@ -17,8 +17,8 @@
                     <label for="kategori">Kategori:</label>
                     <select class="form-control select2" name="kategori" id="kategori">
                         <option disabled selected hidden>Pilih Kategori</option>
-                        <?php foreach($kategori as $k){?>
-                            <option value="<?= $k->id; ?>"><?= $k->kategori; ?></option>
+                        <?php foreach(esc($kategori) as $k){?>
+                            <option value="<?= esc($k->id); ?>"><?= esc($k->kategori); ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -26,8 +26,8 @@
                     <label for="ukuran">Ukuran : </label>
                     <select class="form-control select2" name="ukuran" id="ukuran">
                         <option disabled selected hidden>Pilih Ukuran</option>
-                        <?php foreach($ukuran as $u){?>
-                            <option value="<?php echo $u->id; ?>"><?php echo $u->ukuran; ?></option>
+                        <?php foreach(esc($ukuran) as $u){?>
+                            <option value="<?= esc($u->id); ?>"><?= esc($u->ukuran); ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -35,8 +35,8 @@
                     <label for="supplier">Supplier : </label>
                     <select class="form-control select2" name="supplier" id="supplier">
                         <option disabled selected hidden>Pilih Supplier</option>
-                        <?php foreach($supplier as $s){?>
-                            <option value="<?php echo $s->id; ?>"><?php echo $s->nama; ?></option>
+                        <?php foreach(esc($supplier) as $s){?>
+                            <option value="<?= esc($s->id); ?>"><?= esc($s->nama); ?></option>
                         <?php } ?>
                     </select>
                 </div>

@@ -15,22 +15,15 @@ class Pelanggan extends Migration {
                 'unsigned'          => true, 
                 'auto_increment'    => true
             ],
-			'nama'      => [
-                'type'	        => 'VARCHAR', 
-                'constraint'    => 50
-            ],
-			'no_telp'    => [
-                'type'          => 'VARCHAR', 
-                'constraint'	=> 20
-            ],
-            'email'    => [
-                'type'          => 'VARCHAR', 
-                'constraint'	=> 50
-            ],
 			'tipe'   => [
                 'type'          => 'ENUM', 
-                'constraint'     => ['Umum', 'Membership'],
+                'constraint'    => ['Umum', 'Membership'],
                 'default'       => 'Umum'
+            ],
+            'discount'   => [
+                'type'          => 'INT', 
+                'constraint'    => 3,
+                'null'          => TRUE
             ],
 			'created_at datetime default current_timestamp',
 			'updated_at datetime default current_timestamp on update current_timestamp'

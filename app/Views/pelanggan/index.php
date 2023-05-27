@@ -32,22 +32,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(count($pelanggan) > 0): 
+                                <?php if(count(esc($pelanggan)) > 0): 
                                         $i = 1;
                                 ?>
-                                    <?php foreach($pelanggan as $p) : ?>
+                                    <?php foreach(esc($pelanggan) as $p) : ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td><?= $p->nama ?></td>
-                                            <td><?= $p->no_telp ?></td>
-                                            <td><?= $p->email ?></td>
-                                            <td><?= $p->tipe ?></td>
+                                            <td><?= esc($p->nama) ?></td>
+                                            <td><?= esc($p->no_telp) ?></td>
+                                            <td><?= esc($p->email) ?></td>
+                                            <td><?= esc($p->tipe) ?></td>
                                             <td>
                                                 <div class="btn-group btn-group-sm">
-                                                    <a href="<?= base_url('pelanggan/update/'.$p->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                    <a href="<?= base_url('pelanggan/update/'.esc($p->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                         <i class="fa fa-edit"></i> Edit Data
                                                     </a>
-                                                    <a href="<?= base_url('pelanggan/delete/'.$p->id) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                    <a href="<?= base_url('pelanggan/delete/'.esc($p->id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
                                                         <i class="fa fa-trash"></i> Delete Data
                                                     </a>
                                                 </div>

@@ -32,22 +32,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(count($supplier) > 0): 
+                                <?php if(count(esc($supplier)) > 0): 
                                         $i = 1;
                                 ?>
-                                    <?php foreach($supplier as $s): ?>
+                                    <?php foreach(esc($supplier) as $s): ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td><?= $s->nama ?></td>
-                                            <td><?= $s->no_telp ?></td>
-                                            <td><?= $s->email ?></td>
-                                            <td><?= $s->alamat?></td>
+                                            <td><?= esc($s->nama) ?></td>
+                                            <td><?= esc($s->no_telp) ?></td>
+                                            <td><?= esc($s->email) ?></td>
+                                            <td><?= esc($s->alamat)?></td>
                                             <td>
                                                 <div class="btn-group btn-group-sm">
-                                                    <a href="<?= base_url('supplier/update/'.$s->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                    <a href="<?= base_url('supplier/update/'.esc($s->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                         <i class="fa fa-edit"></i> Edit Data
                                                     </a>
-                                                    <a href="<?= base_url('supplier/delete/'.$s->id) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                    <a href="<?= base_url('supplier/delete/'.esc($s->id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
                                                         <i class="fa fa-trash"></i> Delete Data
                                                     </a>
                                                 </div>

@@ -53,19 +53,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(count($kategori) > 0): 
+                                <?php if(count(esc($kategori)) > 0): 
                                         $i = 1;
                                 ?>
-                                    <?php foreach($kategori as $k) : ?>
+                                    <?php foreach(esc($kategori) as $k) : ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td><?= $k->kategori ?></td>
+                                            <td><?= esc($k->kategori) ?></td>
                                             <td>
                                                 <div class="btn-group btn-group-sm">
-                                                    <a href="<?= base_url('master/update_kategori/'.$k->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                    <a href="<?= base_url('master/update_kategori/'.esc($k->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                         <i class="fa fa-edit"></i> Edit Data
                                                     </a>
-                                                    <a href="<?= base_url('master/delete_kategori/'.$k->id) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                    <a href="<?= base_url('master/delete_kategori/'.esc($k->id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
                                                         <i class="fa fa-trash"></i> Delete Data
                                                     </a>
                                                 </div>

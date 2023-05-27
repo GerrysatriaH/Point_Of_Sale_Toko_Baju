@@ -25,23 +25,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(count($produk) > 0): 
+                                <?php if(count(esc($produk)) > 0): 
                                         $i = 1;
                                 ?>
-                                    <?php foreach($produk as $pr) : ?>
+                                    <?php foreach(esc($produk) as $pr) : ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td><?= $pr->kode_produk ?></td>
-                                            <td><?= $pr->nama_produk ?></td>
-                                            <td><?= $pr->kategori ?></td>
-                                            <td><?= $pr->harga ?></td>
-                                            <td><?= $pr->stok ?></td>
+                                            <td><?= esc($pr->kode_produk) ?></td>
+                                            <td><?= esc($pr->nama_produk) ?></td>
+                                            <td><?= esc($pr->kategori) ?></td>
+                                            <td><?= 'Rp '.number_format(esc($pr->harga), 0 , ',', '.') ?></td>
+                                            <td><?= esc($pr->stok) ?></td>
                                             <td>
                                                 <div class="btn-group btn-group-sm">
-                                                    <a href="<?= base_url('master/update_produk/'.$pr->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                    <a href="<?= base_url('master/update_produk/'.esc($pr->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                         <i class="fa fa-edit"></i> Edit Data
                                                     </a>
-                                                    <a href="<?= base_url('master/delete_produk/'.$pr->id) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                    <a href="<?= base_url('master/view_produk'.esc($pr->id)) ?>" class="btn btn-primary text-light rounded mx-1" title="View Data"> 
+                                                        View Data
+                                                    </a>
+                                                    <a href="<?= base_url('master/delete_produk/'.esc($pr->id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
                                                         <i class="fa fa-trash"></i> Delete Data
                                                     </a>
                                                 </div>

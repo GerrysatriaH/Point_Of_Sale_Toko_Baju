@@ -18,14 +18,14 @@ class Transaksi extends BaseController{
 
     public function index(){
 
-        $this->data['title'] = "Supplier";
+        $this->data['title'] = "Pembayaran";
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
                 'url' => base_url()
             ),
             array(
-                'title' => 'Supplier'
+                'title' => 'Pembayaran'
             )
         );
 

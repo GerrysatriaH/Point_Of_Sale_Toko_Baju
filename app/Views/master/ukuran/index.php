@@ -53,19 +53,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(count($ukuran) > 0): 
+                                <?php if(count(esc($ukuran)) > 0): 
                                         $i = 1;
                                 ?>
-                                    <?php foreach($ukuran as $u) : ?>
+                                    <?php foreach(esc($ukuran) as $u) : ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td><?= $u->ukuran ?></td>
+                                            <td><?= esc($u->ukuran) ?></td>
                                             <td>
                                                 <div class="btn-group btn-group-sm">
-                                                    <a href="<?= base_url('/master/update_ukuran/'.$u->id) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                    <a href="<?= base_url('/master/update_ukuran/'.esc($u->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                         <i class="fa fa-edit"></i> Edit Data
                                                     </a>
-                                                    <a href="<?= base_url('/master/delete_ukuran/'.$u->id) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                    <a href="<?= base_url('/master/delete_ukuran/'.esc($u->id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
                                                         <i class="fa fa-trash"></i> Delete Data
                                                     </a>
                                                 </div>

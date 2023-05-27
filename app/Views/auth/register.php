@@ -13,7 +13,7 @@
                         <div class="alert alert-danger" role="alert">
                             <h4>Periksa Entrian Form</h4>
                             </hr />
-                            <?php echo session()->getFlashdata('error'); ?>
+                            <?= session()->getFlashdata('error'); ?>
                         </div>
                     <?php endif; ?>
 
@@ -21,15 +21,15 @@
                         <?= csrf_field(); ?>
                         <div class="form-group my-4">
                             <label for="name">Username</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <input type="text" name="name" class="form-control" placeholder="Masukan"required>
                         </div>
                         <div class="form-group my-4">
                             <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <input type="email" name="email" class="form-control" placeholder="Masukan"required>
                         </div>
                         <div class="form-group my-4">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input type="password" name="password" class="form-control" placeholder="Masukan"required>
                         </div>
                         <div class="form-group my-4">
                             <button type="submit" class="btn btn-primary">Register</button>
