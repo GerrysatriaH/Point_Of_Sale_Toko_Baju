@@ -88,14 +88,22 @@ class Pembayaran extends BaseController{
         return redirect()->to('pembayaran')->with('success','Data berhasil di reset');
     }
 
-    public function getDataTransaksi(){
-        var_dump($this->request->getPost('transaksiData'));
-        // return view('pembayaran/invoice_template', ['transaksiData' => $transaksiData]);
+    // public function getDataTransaksi(){
+    //     return view('pembayaran/invoice_template');
+    // }
 
-        // if (!empty($transaksiData)) {
-        //     
-        // } else {
-        //     return redirect()->back()->with('error', 'Data transaksi kosong.');
-        // }
+    public function invoice(){
+        $this->data['sub_total'] = $this->request->getVar('sub_total');
+        $this->data['diskon'] = $this->request->getVar('diskon');
+        $this->data['total_akhir'] = $this->request->getVar('total_akhir');
+        $this->data['tunai'] = $this->request->getVar('tunai');
+        $this->data['kembalian'] = $this->request->getVar('kembalian');
+
+        $this->data['pembelian'] = $this->buying_model->select('*, (produk.harga * jumlah) As Total')
+                                                        ->join('produk', 'produk.id = pembelian.product_id')
+                                                        ->join('pelanggan', 'pelanggan.id = pembelian.customer_id')
+                                                        ->get()->getResult();
+
+        return view('pembayaran/invoice_template', $this->data);
     }
 }

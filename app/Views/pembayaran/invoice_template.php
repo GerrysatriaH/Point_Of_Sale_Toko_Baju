@@ -64,40 +64,23 @@
             <p>081213141515</p>
             <p>created by Gerry Satria Halim</p>
         </div>
-        <div class="head">
-            <table class="table">
-                <tr>
-                    <td class="kiri"><?= date("d F Y H:i", strtotime(esc($transaksiData['tanggal'])))?></td>
-                    <td class="kanan">Kasir :</td>
-                    <td class="kanan">nama kasir</td>
-                </tr>
-                <tr>
-                    <td class="kiri"></td>
-                    <td class="kanan">Tipe Pelanggan :</td>
-                    <td class="kanan">tes</td>
-                </tr>
-            </table>
-        </div>
         <div class="transaksi">
             <table class="table">
-                <tr>
-                    <td class="kiri">item</td>
-                    <td class="kanan">jumlah</td>
-                    <td class="kanan">harga</td>
-                    <td class="kanan">total</td>
-                </tr>
-                <tr>
-                    <td class="kiri">tes</td>
-                    <td class="kanan">tes</td>
-                    <td class="kanan">tes</td>
-                    <td class="kanan">tes</td>
-                </tr>
+                    <?php foreach($pembelian as $buy) : ?>
+                        <tr>
+                            <td class="kiri">Item : </td>
+                            <td class="kanan"><?= $buy->nama_produk ?></td>
+                            <td class="kanan">Jumlah : <?= $buy->jumlah ?></td>
+                            <td class="kanan"><?= 'Rp '.number_format($buy->harga, 0 , ',', '.') ?></td>
+                            <td id="total" class="kanan"><?= 'Rp '.number_format($buy->Total, 0 , ',', '.') ?></td>
+                        </tr>
+                    <?php endforeach; ?>
                 <tr>
                     <td colspan="5" style="border-bottom:1px solid; "></td>
                 </tr>
                 <tr>
                     <td colspan="4" class="kanan">Sub Total</td>
-                    <td class="kanan">tse</td>
+                    <td class="kanan"><?= $sub_total ?></td>
                 </tr>
                 <tr>
                     <td colspan="2"></td>
@@ -105,11 +88,11 @@
                 </tr>
                     <tr>
                         <td colspan="4" class="kanan">Diskon Pembelian</td>
-                        <td class="kanan"></td>
+                        <td class="kanan"><?= $diskon ?></td>
                     </tr>
                 <tr>
                     <td colspan="4" class="kanan">Total Akhir</td>
-                    <td class="kanan">tes</td>
+                    <td class="kanan"><?= $total_akhir ?></td>
                 </tr>
                 <tr>
                     <td colspan="2"></td>
@@ -117,11 +100,11 @@
                 </tr>
                 <tr>
                     <td colspan="4" class="kanan">Tunai</td>
-                    <td class="kanan">tes</td>
+                    <td class="kanan"><?= $tunai ?></td>
                 </tr>
                 <tr>
                     <td colspan="4" class="kanan">Kembalian</td>
-                    <td class="kanan">tes</td>
+                    <td class="kanan"><?= $kembalian ?></td>
                 </tr>
             </table>
         </div>

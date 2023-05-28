@@ -55,8 +55,19 @@
                     <a href="<?= base_url('user') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>#</h3>
+                        <p>Transaksi Pembayaran</p>
+                    </div>
+                    <div class="icon">
+                    </div>
+                    <a href="<?= base_url('Pembayaran') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <section class="col-lg-12 connectedSortable">
                 <div class="card">
                     <div class="card-header">
@@ -83,7 +94,7 @@
                     </div>
                 </div>  
             </section>
-        </div>
+        </div> -->
     </div>
 </section>
 

@@ -111,9 +111,11 @@
             </div>
         </div>
     </div>
-    <!-- .row -->
-    <div class="row">
-        <div class="col-md-4">
+    
+<!-- .row -->
+<div class="row">
+    <div class="col-md-4">      
+        <form action="pembayaran/invoice" method="post">
             <div class="card card-outline">
                 <div class="card-body">
                     <div class="form-group row">
@@ -163,6 +165,7 @@
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </div>
 
