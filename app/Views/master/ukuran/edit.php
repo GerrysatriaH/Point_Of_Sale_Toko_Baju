@@ -3,9 +3,8 @@
 
 <div class="container-fluid">
     <div class="card">
-        <form action="<?= base_url('master/submit_changes_ukuran') ?>" method="post">
+        <form action="<?= base_url('master/submit_changes_ukuran/'.$data['id']) ?>" method="post">
             <div class="card-body">
-                <input type="hidden" name="id" value="<?= isset($data['id']) ? esc($data['id']) : '' ?>">
                 <div class="form-group">
                     <label for="nama">Ukuran :</label>
                     <div class="input-group">

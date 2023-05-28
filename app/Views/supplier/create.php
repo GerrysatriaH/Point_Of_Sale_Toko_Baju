@@ -1,9 +1,11 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
+<?= $this->include('component/alert') ?>
+
 <div class="container-fluid">
     <div class="card">
-        <form action="<?= base_url('/supplier/submit_changes_supplier') ?>" method="post">
+        <form action="<?= base_url('supplier/create_supplier') ?>" method="post">
             <div class="card-body">
                 <div class="form-group">
                     <label for="nama">Nama</label>

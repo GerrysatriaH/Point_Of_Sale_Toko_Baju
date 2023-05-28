@@ -42,7 +42,7 @@ class Master extends BaseController{
         return view('master/kategori/index', $this->data);
     }
 
-    public function update_kategori($id=''){
+    public function edit_kategori($id=''){
         $this->data['title'] = 'Ubah Kategori Produk';
         $this->data['breadcrumbs'] = array(
             array(
@@ -65,22 +65,29 @@ class Master extends BaseController{
         return view('master/kategori/edit', $this->data);
     }
 
-    public function submit_changes_kategori(){
-        $this->data['request'] = $this->request;
-        $post = [
-            'kategori' => $this->request->getPost('kategori')
+    public function create_kategori(){
+        $data = [
+            'kategori' => $this->request->getVar('kategori')
         ];
-        if(!empty($this->request->getPost('id'))) {
-            $save = $this->category_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
-        } else {
-            $save = $this->category_model->insert($post);
-        }
 
-        if($save){
-            return redirect()->to('master/kategori')->with('success', 'Berhasil Memperbaharui Data');
-        } else {
-            return redirect()->to('master/kategori')->with('success', 'Berhasil Menambahkan Data');
-        }
+        if($this->category_model->where(['kategori' => $data['kategori']])->first()){
+            return redirect()->back()->withInput()->with('error', 'Kategori telah ada');
+        } 
+
+        $this->category_model->insert($data);
+        return redirect()->to('master/kategori')->with('success', 'Berhasil Menambahkan Data');
+    }
+
+    public function update_kategori($id=''){
+        $data = [
+            'kategori' => $this->request->getVar('kategori')
+        ];
+
+        if($this->category_model->where(['kategori' => $data['kategori']])->first()){
+            return redirect()->back()->withInput()->with('error', 'Kategori telah ada');
+        } 
+        $this->category_model->where(['id'=>$id])->set($data)->update();
+        return redirect()->to('master/kategori')->with('success', 'Berhasil Memperbaharui Data');
     }
 
     public function delete_kategori($id=''){
@@ -111,7 +118,7 @@ class Master extends BaseController{
         return view('master/ukuran/index', $this->data);
     }
 
-    public function update_ukuran($id=''){
+    public function edit_ukuran($id=''){
         $this->data['title'] = 'Ubah Ukuran Produk';
         $this->data['breadcrumbs'] = array(
             array(
@@ -134,22 +141,29 @@ class Master extends BaseController{
         return view('master/ukuran/edit', $this->data);
     }
 
-    public function submit_changes_ukuran(){
-        $this->data['request'] = $this->request;
-        $post = [
-            'ukuran' => $this->request->getPost('ukuran')
+    public function create_ukuran(){
+        $data = [
+            'ukuran' => $this->request->getVar('ukuran')
         ];
-        if(!empty($this->request->getPost('id'))) {
-            $save = $this->size_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
-        } else {
-            $save = $this->size_model->insert($post);
-        }
-        
-        if($save){
-            return redirect()->to('master/ukuran')->with('success', 'Berhasil Memperbaharui Data');
-        } else {
-            return redirect()->to('master/ukuran')->with('success', 'Berhasil Menambahkan Data');
-        }
+
+        if($this->size_model->where(['ukuran' => $data['ukuran']])->first()){
+            return redirect()->back()->withInput()->with('error', 'ukuran telah ada');
+        } 
+
+        $this->size_model->insert($data);
+        return redirect()->to('master/ukuran')->with('success', 'Berhasil Menambahkan Data');
+    }
+
+    public function update_ukuran($id=''){
+        $data = [
+            'ukuran' => $this->request->getVar('ukuran')
+        ];
+
+        if($this->size_model->where(['ukuran' => $data['ukuran']])->first()){
+            return redirect()->back()->withInput()->with('error', 'ukuran telah ada');
+        } 
+        $this->size_model->where(['id'=>$id])->set($data)->update();
+        return redirect()->to('master/ukuran')->with('success', 'Berhasil Memperbaharui Data');
     }
 
     public function delete_ukuran($id=''){
@@ -258,7 +272,7 @@ class Master extends BaseController{
 
     public function submit_changes_produk(){
         $this->data['request'] = $this->request;
-        $post = [
+        $data = [
             'kode_produk' => $this->request->getPost('kode_produk'),
             'nama_produk' => $this->request->getPost('nama_produk'),
             'id_kategori' => $this->request->getPost('kategori'),
@@ -267,10 +281,11 @@ class Master extends BaseController{
             'harga' => $this->request->getPost('harga'),
             'stok'  => $this->request->getPost('stok'),
         ];
+
         if(!empty($this->request->getPost('id'))) {
-            $save = $this->product_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
+            $save = $this->product_model->where(['id'=>$this->request->getPost('id')])->set($data)->update();
         } else {
-            $save = $this->product_model->insert($post);
+            $save = $this->product_model->insert($data);
         }
         
         if($save){

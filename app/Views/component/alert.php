@@ -13,6 +13,7 @@
         <?php endif; ?>
 
     <?php session()->remove('success'); ?>
+    <?php session()->remove('warning'); ?>
     <?php session()->remove('error'); ?>
 });
 </script>

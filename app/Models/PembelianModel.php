@@ -17,4 +17,11 @@ class PembelianModel extends Model
     public function pelanggan() {
         return $this->belongsTo(PelangganModel::class, 'customer_id', 'id');
     }
+
+    public function getPembelian($id = false){
+        if ($id == false) {
+            return $this->findAll();
+        }
+        return $this->find($id);
+    }
 }

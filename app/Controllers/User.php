@@ -44,7 +44,7 @@ class User extends BaseController{
         return view('user/user_manage/index', $this->data);
     }
 
-    public function create_user(){
+    public function create(){
 
         $this->data['title'] = "Daftar Pengguna";
         $this->data['breadcrumbs'] = array(
@@ -66,7 +66,7 @@ class User extends BaseController{
         return view('user/user_manage/create', $this->data);
     }
 
-    public function update_user($id=''){
+    public function update($id=''){
 
         $this->data['title'] = "Daftar Pengguna";
         $this->data['breadcrumbs'] = array(
@@ -93,42 +93,30 @@ class User extends BaseController{
         return view('user/user_manage/edit', $this->data);
     }
 
-    public function submit_changes_user(){
-        $this->data['request'] = $this->request;
+    public function create_user(){
         $status = 'aktif';
-        $post = [
-            'username' => $this->request->getPost('username'),
-            'email'    => $this->request->getPost('email'),
+        $data = [
+            'username' => $this->request->getVar('username'),
+            'email'    => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'status'   => $status,
-            'role_id'  => $this->request->getPost('role')
+            'role_id'  => $this->request->getVar('role')
         ];
 
-        $save = $this->user_model->insert($post);
-
-        if($save){
-            return redirect()->to('user/user_manage')->with('success', 'Berhasil Menambahkan Data');
-        } else {
-            return redirect()->to('user/user_manage')->with('error', 'Gagal Menambahkan Data');
-        }
+        $this->user_model->insert($data);
+        return redirect()->to('user/user_manage')->with('success', 'Berhasil Menambahkan Data');
     }
 
-    public function save_changes_user($id=''){
-        $this->data['request'] = $this->request;
-        $post = [
-            'username' => $this->request->getPost('username'),
-            'email'    => $this->request->getPost('email'),
-            'status'   => $this->request->getPost('status'),
-            'role_id'  => $this->request->getPost('role')
+    public function update_user($id=''){
+        $data = [
+            'username' => $this->request->getVar('username'),
+            'email'    => $this->request->getVar('email'),
+            'status'   => $this->request->getVar('status'),
+            'role_id'  => $this->request->getVar('role')
         ];
 
-        $save = $this->user_model->where(['id'=> $id])->set($post)->update();
-
-        if($save){
-            return redirect()->to('user/user_manage')->with('success', 'Berhasil Memperbaharui Data');
-        } else {
-            return redirect()->to('user/user_manage')->with('error', 'Gagal Memperbaharui Data');
-        }
+        $this->user_model->where(['id'=> $id])->set($data)->update();
+        return redirect()->to('user/user_manage')->with('success', 'Berhasil Memperbaharui Data');
     }
 
     public function delete_user($id=''){

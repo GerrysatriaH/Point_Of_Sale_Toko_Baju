@@ -11,4 +11,8 @@ class PelangganModel extends Model {
     protected $useAutoIncrement = true;
 
     protected $allowedFields = ['tipe', 'discount'];
+
+    public function getDiscount($id){
+        
+    }
 }

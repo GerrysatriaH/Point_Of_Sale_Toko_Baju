@@ -75,26 +75,33 @@ class Supplier extends BaseController{
         return view('supplier/edit',$this->data);
     }
 
-    public function submit_changes_supplier(){
-        
-        $this->data['request'] = $this->request;
-        $post = [
-            'nama'      => $this->request->getPost('nama'),
-            'no_telp'   => $this->request->getPost('no_telp'),
-            'alamat'    => $this->request->getPost('alamat')
+    public function create_supplier(){
+        $data = [
+            'nama'      => $this->request->getVar('nama'),
+            'no_telp'   => $this->request->getVar('no_telp'),
+            'alamat'    => $this->request->getVar('alamat')
         ];
 
-        if(!empty($this->request->getPost('id'))) {
-            $save = $this->supplier_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
-        } else {
-            $save = $this->supplier_model->insert($post);
-        }
+        if($this->supplier_model->where(['nama' => $data['nama']])->first()){
+            return redirect()->back()->withInput()->with('error', 'Data supplier telah ada');
+        } 
 
-        if($save){
-            return redirect()->to('supplier')->with('success', 'Berhasil Memperbaharui Data');
-        } else {
-            return redirect()->to('supplier')->with('success', 'Berhasil Menambahkan Data');
-        }
+        $this->supplier_model->insert($data);
+        return redirect()->to('supplier')->with('success', 'Berhasil Menambahkan Data');
+    }
+
+    public function update_supplier($id=''){
+        $data = [
+            'nama'      => $this->request->getVar('nama'),
+            'no_telp'   => $this->request->getVar('no_telp'),
+            'alamat'    => $this->request->getVar('alamat')
+        ];
+
+        if($this->supplier_model->where(['nama' => $data['nama']])->first()){
+            return redirect()->back()->withInput()->with('error', 'Data supplier telah ada');
+        } 
+        $this->supplier_model->where(['id'=>$id])->set($data)->update();
+        return redirect()->to('supplier')->with('success', 'Berhasil Memperbaharui Data');
     }
 
     public function delete($id=''){

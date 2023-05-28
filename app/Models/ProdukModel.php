@@ -11,4 +11,11 @@ class ProdukModel extends Model {
     protected $useAutoIncrement = true;
 
     protected $allowedFields = ['kode_produk','nama_produk', 'id_kategori', 'id_ukuran', 'id_supplier', 'harga', 'stok'];
+
+    public function getProduk($id = false){
+        if ($id == false) {
+            return $this->findAll();
+        }
+        return $this->find($id);
+    }
 }

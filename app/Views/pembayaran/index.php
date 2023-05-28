@@ -22,9 +22,9 @@
                         <div class="form-group row">
                             <label for="pelanggan" class="col-sm-3 col-form-label">Pelanggan</label>
                             <div class="col-sm-9">
-                                <select name="pelanggan" id="pelanggan" class="form-control">
+                                <select name="pelanggan" id="pelanggan_pembelian" class="form-control">
                                     <?php foreach (esc($pelanggan) as $data): ?>
-                                        <option value="<?= esc($data->id) ?>"><?= esc($data->tipe);?></option>
+                                        <option value="<?= esc($data->discount)?>"><?= esc($data->tipe);?></option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
@@ -69,7 +69,12 @@
                 <div class="p-0 table-responsive">
                     <table class="table table-bordered table-striped" id="tabel-keranjang" width="100%">
                         <colgroup>
-                        
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="20%">
                         </colgroup>
                         <thead>
                             <tr>
@@ -89,7 +94,13 @@
                                     <td><?= $buy->harga ?></td>
                                     <td><?= $buy->jumlah ?></td>
                                     <td><?= $buy->Total ?></td>
-                                    <!-- <td><$buy- ?></td> -->
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="<?= base_url('pembayaran/delete_pembelian/'.esc($buy->product_id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                <i class="fa fa-trash"></i> Delete Data
+                                            </a>
+                                        </div>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -106,19 +117,19 @@
                     <div class="form-group row">
                         <label for="sub_total" class="col-sm-5 col-form-label">Sub Total</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control text-right" name="sub_total" id="sub_total" value="0" disabled>
+                            <input type="number" class="form-control text-right" name="sub_total" id="sub_total" value="0" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="diskon" class="col-sm-5 col-form-label">Diskon (%)</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control text-right" name="diskon" id="diskon" autocomplete="off" value="0" min="0" disabled>
+                            <input type="number" class="form-control text-right" name="diskon" id="diskon_pembelian" autocomplete="off" value="0" min="0" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="total_akhir" class="col-sm-5 col-form-label">Total Akhir</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control text-right" name="total_akhir" id="total_akhir" value="0" disabled>
+                            <input type="number" class="form-control text-right" name="total_akhir" id="total_akhir" value="0" readonly>
                         </div>
                     </div>
                 </div>
@@ -152,16 +163,7 @@
         </div>
     </div>
 </div>
-<script>
-// Mendapatkan nilai input
-var inputValue = document.getElementById('pelanggan').value;
 
-// Validasi apakah nilai input sudah diisi sebelumnya
-if (inputValue !== '') {
-    // Tampilkan pesan kesalahan atau abaikan pengisian
-    alert('Field ini hanya dapat diisi sekali.');
-    return false; // Untuk mencegah pengiriman form
-}
-</script>
+<script src="/js/pembayaran.js"></script>
 
 <?= $this->endSection() ?>

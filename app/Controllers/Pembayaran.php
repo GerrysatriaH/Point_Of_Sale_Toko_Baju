@@ -59,6 +59,16 @@ class Pembayaran extends BaseController{
         ];
 
         $this->buying_model->insert($post);
-        return redirect()->to('pembayaran')->withInput()->with('success', 'Berhasil Menambahkan Data');
+        return redirect()->to('pembayaran')->withInput();
+    }
+
+    public function delete_pembelian($id=''){
+        if(empty($id)){
+            return redirect()->to('pembayaran')->with('error', 'Gagal Menghapus Data');
+        }
+        $delete = $this->buying_model->Where(['product_id' => $id])->delete();
+        if($delete){
+            return redirect()->to('pembayaran')->with('success', 'Berhasil Menghapus Data');
+        }
     }
 }

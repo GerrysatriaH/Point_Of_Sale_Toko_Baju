@@ -1,11 +1,12 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
+<?= $this->include('component/alert') ?>
+
 <div class="container-fluid">
     <div class="card">
-        <form action="<?= base_url('/supplier/submit_changes_supplier') ?>" method="post">
+        <form action="<?= base_url('supplier/update_supplier/'.$data['id']) ?>" method="post">
             <div class="card-body">
-                <input type="hidden" name="id" value="<?= isset($data['id']) ? esc($data['id']) : '' ?>">
                 <div class="form-group">
                     <label for="nama">Nama</label>
                     <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required value="<?= isset($data['nama']) ? esc($data['nama']) : '' ?>">
