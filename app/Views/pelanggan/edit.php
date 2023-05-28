@@ -3,9 +3,8 @@
 
 <div class="container-fluid">
     <div class="card">
-        <form action="<?= base_url('/pelanggan/submit_changes_pelanggan') ?>" method="post">
+        <form action="<?= base_url('/pelanggan/submit_changes_pelanggan/'.$data['id']) ?>" method="post">
             <div class="card-body">
-                <input type="hidden" name="id" value="<?= isset($data['id']) ? esc($data['id']) : '' ?>">
                 <div class="form-group">
                     <label for="tipe">Tipe : </label>
                     <input type="text" class="form-control" name="tipe" id="tipe" placeholder="Masukkan Nama Tipe Pelanggan" required value="<?= isset($data['tipe']) ? esc($data['tipe']) : '' ?>">

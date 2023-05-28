@@ -1,8 +1,10 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
+<?= $this->include('component/alert') ?>
+
 <div class="container-fluid px-3">
-    <form action="<?= base_url('pembayaran/addproduk') ?>" method="POST">
+    <form action="<?= base_url('pembayaran/addproduk') ?>" method="POST" id="form">
         <div class="row">
             <div class="col-md-6">
                 <div class="card card-outline">
@@ -22,9 +24,9 @@
                         <div class="form-group row">
                             <label for="pelanggan" class="col-sm-3 col-form-label">Pelanggan</label>
                             <div class="col-sm-9">
-                                <select name="pelanggan" id="pelanggan_pembelian" class="form-control">
+                                <select name="pelanggan" id="pelanggan" class="form-control">
                                     <?php foreach (esc($pelanggan) as $data): ?>
-                                        <option value="<?= esc($data->discount)?>"><?= esc($data->tipe);?></option>
+                                        <option value="<?= esc($data->id)?>"><?= esc($data->tipe);?></option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
@@ -39,7 +41,7 @@
                             <label for="barcode" class="col-sm-3 col-form-label">Kode Produk</label>
                             <div class="col-sm-7">
                                 <div class="input-group">
-                                    <select class="form-control select2" name="produk" id="produk">
+                                    <select class="form-control select2" name="produk" id="produk" required>
                                         <option disabled selected hidden>-- Cari Produk --</option>
                                         <?php foreach(esc($produk) as $p){?>
                                             <option value="<?= esc($p->id); ?>"><?= esc($p->kode_produk).' - '. esc($p->nama_produk); ?></option>
@@ -51,7 +53,7 @@
                         <div class="form-group row">
                             <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                             <div class="col-sm-7">
-                                <input type="number" class="form-control" name="jumlah" id="jumlah" min="1" placeholder="Masukan jumlah barang">
+                                <input type="number" class="form-control" name="jumlah" id="jumlah" min="1" placeholder="Masukan jumlah barang" required>
                             </div>
                             <div class="col-sm-4 pt-3">
                                 <button type="submit" id="tambah" class="btn btn-primary">Tambah</button>
@@ -91,9 +93,9 @@
                                 <tr>
                                     <td><?= $buy->kode_produk ?></td>
                                     <td><?= $buy->nama_produk ?></td>
-                                    <td><?= $buy->harga ?></td>
+                                    <td><?= 'Rp '.number_format($buy->harga, 0 , ',', '.') ?></td>
                                     <td><?= $buy->jumlah ?></td>
-                                    <td><?= $buy->Total ?></td>
+                                    <td id="total"><?= 'Rp '.number_format($buy->Total, 0 , ',', '.') ?></td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="<?= base_url('pembayaran/delete_pembelian/'.esc($buy->product_id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
@@ -117,19 +119,19 @@
                     <div class="form-group row">
                         <label for="sub_total" class="col-sm-5 col-form-label">Sub Total</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control text-right" name="sub_total" id="sub_total" value="0" readonly>
+                            <input type="number" class="form-control text-right" name="sub_total" id="sub_total" value="<?= $total ?>" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="diskon" class="col-sm-5 col-form-label">Diskon (%)</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control text-right" name="diskon" id="diskon_pembelian" autocomplete="off" value="0" min="0" readonly>
+                            <input type="number" class="form-control text-right" name="diskon" id="diskon" value="<?= isset($pembelian[0]->discount) ? $pembelian[0]->discount : 0; ?>" min="0" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="total_akhir" class="col-sm-5 col-form-label">Total Akhir</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control text-right" name="total_akhir" id="total_akhir" value="0" readonly>
+                            <input type="number" class="form-control text-right" name="total_akhir" id="total_akhir" readonly>
                         </div>
                     </div>
                 </div>
@@ -141,7 +143,7 @@
                     <div class="form-group row">
                         <label for="tunai" class="col-sm-5 col-form-label">Tunai</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control text-right" name="tunai" id="tunai" value="0">
+                            <input type="number" class="form-control text-right" name="tunai" min="0" id="tunai">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -156,8 +158,8 @@
         <div class="col-md-4">
             <div class="card card-outline">
                 <div class="card-body">
-                    <p><button class="btn btn-success" id="bayar"><i class="fa fa-paper-plane"></i> Proses Pembayaran</button></p>
-                    <p><button class="btn btn-warning" id="batal"><i class="fa fa-refresh"></i><span class="px-6">Batal</span></button></p>
+                    <p><button class="btn btn-success" id="bayar"><i class="fas fa-paper-plane"></i> Proses Pembayaran</button></p>
+                    <a href="<?= base_url('pembayaran/emptytable') ?> "><button class="btn btn-warning" id="batal"><i class="fas fa-refresh"></i><span class="px-6">Reset</span></button></a>
                 </div>
             </div>
         </div>

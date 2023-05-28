@@ -61,6 +61,10 @@ $routes->add('/user/(:any)', 'User::$1');
 $routes->add('/pembayaran', 'Pembayaran::index');
 $routes->add('/pembayaran/(:any)', 'Pembayaran::$1');
 
+// Penjualan
+$routes->add('/penjualan', 'Penjualan::index');
+$routes->add('/penjualan/(:any)', 'Penjualan::$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

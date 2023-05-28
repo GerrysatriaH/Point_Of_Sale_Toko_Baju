@@ -76,15 +76,15 @@ class Pelanggan extends BaseController{
         return view('pelanggan/edit', $this->data);
     }
 
-    public function submit_changes_pelanggan(){
+    public function submit_changes_pelanggan($id=''){
         $this->data['request'] = $this->request;
         $post = [
             'tipe'      => $this->request->getPost('tipe'),
             'discount'  => $this->request->getPost('discount')
         ];
 
-        if(!empty($this->request->getPost('id'))) {
-            $save = $this->customer_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
+        if(!empty($id)) {
+            $save = $this->customer_model->where(['id'=> $id])->set($post)->update();
         } else {
             $save = $this->customer_model->insert($post);
         }

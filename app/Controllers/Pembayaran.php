@@ -9,7 +9,6 @@ use App\Models\PembelianModel;
 class Pembayaran extends BaseController{
 
     protected $data;
-    protected $dataArray;
 
     protected $product_model;
     protected $customer_model;
@@ -37,16 +36,20 @@ class Pembayaran extends BaseController{
 
         $this->data['produk']    = $this->product_model->select('id, nama_produk, kode_produk')->get()->getResult();
         $this->data['pelanggan'] = $this->customer_model->orderBy('id ASC')->select('*')->get()->getResult();
-        $this->data['pembelian'] = $this->buying_model->select('*, (produk.harga * jumlah) As Total')->join('produk', 'produk.id = pembelian.product_id')
-                                                      ->join('pelanggan', 'pelanggan.id = pembelian.customer_id')
-                                                      ->get()->getResult();
+        $this->data['pembelian'] = $this->buying_model->select('*, (produk.harga * jumlah) As Total')
+                                                        ->join('produk', 'produk.id = pembelian.product_id')
+                                                        ->join('pelanggan', 'pelanggan.id = pembelian.customer_id')
+                                                        ->get()->getResult();
+
+        $this->data['total'] = 0;
+        foreach ($this->data['pembelian'] as $buy) {
+            $this->data['total'] += $buy->Total;
+        }
 
         return view('pembayaran/index', $this->data);
     }
 
     public function addProduk(){
-
-        $this->data['request'] = $this->request;
 
         $id_product     = $this->request->getVar('produk');
         $id_pelanggan   = $this->request->getVar('pelanggan');
@@ -58,8 +61,16 @@ class Pembayaran extends BaseController{
             'jumlah'        => $jumlah
         ];
 
+        if($this->buying_model->select('*')->countAll() > 0){
+            if($this->buying_model->select('*')->where(['product_id'=>$post['product_id']])->first()){
+                return redirect()->to('pembayaran')->with('error', 'Produk telah dipilih');
+            } else if(!$this->buying_model->select('*')->where(['customer_id'=>$post['customer_id']])->first()) {
+                return redirect()->to('pembayaran')->with('error', 'Tipe pelanggan berubah');
+            }
+        }
+
         $this->buying_model->insert($post);
-        return redirect()->to('pembayaran')->withInput();
+        return redirect()->to('pembayaran')->withInput()->with('success', 'produk berhasil ditambahkan');
     }
 
     public function delete_pembelian($id=''){
@@ -70,5 +81,21 @@ class Pembayaran extends BaseController{
         if($delete){
             return redirect()->to('pembayaran')->with('success', 'Berhasil Menghapus Data');
         }
+    }
+
+    public function emptyTable(){
+        $this->buying_model->emptyTable();
+        return redirect()->to('pembayaran')->with('success','Data berhasil di reset');
+    }
+
+    public function getDataTransaksi(){
+        var_dump($this->request->getPost('transaksiData'));
+        // return view('pembayaran/invoice_template', ['transaksiData' => $transaksiData]);
+
+        // if (!empty($transaksiData)) {
+        //     
+        // } else {
+        //     return redirect()->back()->with('error', 'Data transaksi kosong.');
+        // }
     }
 }

@@ -8,12 +8,10 @@
                 <div class="form-group">
                     <label for="tipe">Tipe : </label>
                     <input type="text" class="form-control" name="tipe" id="tipe" placeholder="Masukkan Nama Tipe Pelanggan" required>
-                    <span class="label label-text-alt text-error"><?= session()->getFlashdata('not_valid')['tipe'] ?? ' ' ?></span>
                 </div>
                 <div class="form-group">
                     <label for="nama">Penawaran Diskon : </label>
-                    <input type="text" step="0.1" min="0" class="form-control" name="discount" id="discount" placeholder="Masukkan Penawaran Discount" required>
-                    <span class="label label-text-alt text-error"><?= session()->getFlashdata('not_valid')['discount'] ?? ' ' ?></span>
+                    <input type="text" step="0.01" min="0" class="form-control" name="discount" id="discount" placeholder="Masukkan Penawaran Discount" required>
                 </div>
             </div>
             <div class="card-footer">
