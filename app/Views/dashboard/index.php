@@ -10,49 +10,49 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>1</h3>
+                        <h3><?= $produk ?></h3>
                         <p>Jumlah Produk</p>
                     </div>
                     <div class="icon">
                       <i class="fas fa-cube"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('master/produk') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>2</h3>
+                        <h3><?= $supplier ?></h3>
                         <p>Jumlah Supplier</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-truck"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('supplier') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>3</h3>
-                        <p>Pelanggan</p>
+                        <h3><?= $pelanggan ?></h3>
+                        <p>Tipe Pelanggan</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('pelanggan') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>4</h3>
+                        <h3><?= $pengguna ?></h3>
                         <p>Pengguna</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-plus"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('user') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>

@@ -11,9 +11,9 @@ $(document).ready(function(){
 
     function calculateKembalian() {
         var tunai = parseFloat($('#tunai').val());
-        var sub_total = parseFloat($('#sub_total').val());
+        var total_akhir = parseFloat($('#total_akhir').val());
 
-        var kembalian = tunai - sub_total;
+        var kembalian = tunai - total_akhir;
 
         if (kembalian >= 0) {
             $('#kembalian').val(kembalian);
