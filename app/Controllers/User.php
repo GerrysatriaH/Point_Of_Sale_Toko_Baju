@@ -76,7 +76,7 @@ class User extends BaseController{
             ),
             array(
                 'title' => 'Daftar Pengguna',
-                'url' => base_url('/user/user_manage')
+                'url' => base_url('user/user_manage')
             ),
             array(
                 'title' => 'Tambah Data Pengguna'
@@ -84,7 +84,7 @@ class User extends BaseController{
         );
 
         if(empty($id)){
-            return redirect()->to('supplier')->with('error', 'Data Tidak Ditemukan');
+            return redirect()->to('user/user_manage')->with('error', 'Data Tidak Ditemukan');
         }
 
         $this->data['data'] = $this->user_model->orderBy('id ASC')->select('*')->where(['id'=>$id])->first();
@@ -127,21 +127,5 @@ class User extends BaseController{
         if($delete){
             return redirect()->to('user/user_manage')->with('success', 'Berhasil Menghapus Data');
         }
-    }
-
-    public function profile($id=''){
-        $this->data['title'] = 'Profile Pengguna';
-        $this->data['breadcrumbs'] = array(
-            array(
-                'title' => 'Dashboard',
-                'url' => base_url()
-            ),
-            array(
-                'title' => 'Profile Pengguna'
-            )
-        );
-
-        // $this->data['profil'] = $this->
-        return view('user/profile/index', $this->data);
     }
 }

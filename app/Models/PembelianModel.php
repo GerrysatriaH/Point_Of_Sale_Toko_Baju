@@ -17,4 +17,12 @@ class PembelianModel extends Model
     public function pelanggan() {
         return $this->belongsTo(PelangganModel::class, 'customer_id', 'id');
     }
+
+    public function getDataItem(){
+        return $this->select('produk.nama_produk, produk.harga, pembelian.jumlah, (produk.harga * jumlah) As total')
+                    ->join('produk', 'produk.id = pembelian.product_id')
+                    ->join('pelanggan', 'pelanggan.id = pembelian.customer_id')
+                    ->get()
+                    ->getResult();
+    }
 }

@@ -64,45 +64,30 @@
                 </div>
             </div>
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-primary">
+                <div class="small-box bg-dark">
                     <div class="inner">
-                        <h3>#</h3>
+                        <h3>#1</h3>
                         <p>Transaksi Pembayaran</p>
                     </div>
                     <div class="icon">
+                        <i class="fas fa-shopping-bag"></i>
                     </div>
                     <a href="<?= base_url('pembayaran') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-        </div>
-        <!-- <div class="row">
-            <section class="col-lg-12 connectedSortable">
-                <div class="card">
-                    <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-chart-pie mr-1"></i>Sales</h3>
-                    <div class="card-tools">
-                        <ul class="nav nav-pills ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                            </li>
-                        </ul>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-dark">
+                    <div class="inner">
+                        <h3>#2</h3>
+                        <p>Riwayat Pembayaran</p>
                     </div>
+                    <div class="icon">
+                    <i class="fas fa-receipt"></i>
+                    </div>
+                    <a href="<?= base_url('penjualan/riwayat') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-                <div class="card-body">
-                    <div class="tab-content p-0">
-                        <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                          <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                        </div>
-                        <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                            <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                        </div>
-                    </div>
-                </div>  
-            </section>
-        </div> -->
+            </div>
+        </div>
     </div>
 </section>
 

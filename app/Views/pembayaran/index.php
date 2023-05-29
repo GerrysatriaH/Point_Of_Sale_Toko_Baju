@@ -116,6 +116,8 @@
 <div class="row">
     <div class="col-md-4">      
         <form action="pembayaran/invoice" method="post">
+            <input type="date" class="form-control" name="tanggal" id="tanggal" hidden value="<?=date('Y-m-d')?>">
+            <input type="text" class="form-control" name="user" id="user" hidden value="<?= session()->get('nama') ?>">
             <div class="card card-outline">
                 <div class="card-body">
                     <div class="form-group row">

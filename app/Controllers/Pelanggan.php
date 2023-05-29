@@ -84,14 +84,10 @@ class Pelanggan extends BaseController{
         ];
 
         if(!empty($id)) {
-            $save = $this->customer_model->where(['id'=> $id])->set($post)->update();
-        } else {
-            $save = $this->customer_model->insert($post);
-        }
-
-        if($save){
+            $this->customer_model->where(['id'=> $id])->set($post)->update();
             return redirect()->to('pelanggan')->with('success', 'Berhasil Memperbaharui Data');
         } else {
+            $this->customer_model->insert($post);
             return redirect()->to('pelanggan')->with('success', 'Berhasil Menambahkan Data');
         }
     }

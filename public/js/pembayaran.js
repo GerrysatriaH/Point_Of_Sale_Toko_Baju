@@ -108,35 +108,4 @@ $(document).ready(function(){
 
         return transaksiData;
     }
-
-    // $('#bayar').click(function(e) {
-    //     e.preventDefault();
-    //     var kasir = $('#user').val();
-    //     var tanggal = $('#tanggal').val();
-
-    //     $.ajax({
-    //         url: '/pembayaran/getDataTransaksi',
-    //         method: 'POST',
-    //         data: { kasir: kasir,
-    //                 tanggal: tanggal, 
-    //               },
-    //         success: function(response) {
-    //             Swal.fire({
-    //                 icon: 'success',
-    //                 title: 'Transaksi Berhasil'
-    //             }).then((response) => {
-    //                 window.open(
-    //                     'pembayaran/getDataTransaksi'
-    //                 )
-    //                 location.reload(true)
-    //             })
-    //         },
-    //         error: function(xhr, status, error) {
-    //             Swal.fire({
-    //                 icon: 'error',
-    //                 title: 'Transaksi gagal'
-    //             })
-    //         }
-    //     });
-    // });
 });

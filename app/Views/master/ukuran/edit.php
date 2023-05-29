@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="card">
-        <form action="<?= base_url('master/submit_changes_ukuran/'.$data['id']) ?>" method="post">
+        <form action="<?= base_url('master/update_ukuran/'.$data['id']) ?>" method="post">
             <div class="card-body">
                 <div class="form-group">
                     <label for="nama">Ukuran :</label>

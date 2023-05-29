@@ -28,12 +28,6 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('pembayaran') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-money-check-alt"></i>
-                        <p> Pembayaran</p>
-                    </a>
-                </li>
                 <?php if(session()->get('role_id') == 1 || session()->get('role_id') == 2) { ?>
                     <li class="nav-item">
                         <a href="<?= base_url('pelanggan') ?>" class="nav-link">
@@ -74,6 +68,19 @@
                         </ul>
                     </li>
                 <?php } ?>
+                <li class="nav-header">Transaksi</li>
+                <li class="nav-item">
+                    <a href="<?= base_url('pembayaran') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p> Input Transaksi</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('penjualan/riwayat') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-history"></i>
+                        <p> Riwayat Transaksi</p>
+                    </a>
+                </li>
                 <li class="nav-header">Administrator</li>
                 <?php if(session()->get('role_id') == 1) { ?>
                     <li class="nav-item">

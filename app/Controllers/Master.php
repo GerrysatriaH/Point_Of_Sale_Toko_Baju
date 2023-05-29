@@ -27,6 +27,7 @@ class Master extends BaseController{
     //-------------------------------------------- Kategori Baju -----------------------------------------------------//
 
     public function kategori(){
+
         $this->data['title'] = 'Kategori Produk';
         $this->data['breadcrumbs'] = array(
             array(
@@ -43,6 +44,7 @@ class Master extends BaseController{
     }
 
     public function edit_kategori($id=''){
+
         $this->data['title'] = 'Ubah Kategori Produk';
         $this->data['breadcrumbs'] = array(
             array(
@@ -61,6 +63,7 @@ class Master extends BaseController{
         if(empty($id)){
             return redirect()->to('master/kategori')->with('error', 'Data Tidak Ditemukan');
         }
+
         $this->data['data'] = $this->category_model->select('*')->where(['id'=>$id])->first();
         return view('master/kategori/edit', $this->data);
     }
@@ -224,24 +227,6 @@ class Master extends BaseController{
         return view('master/produk/create', $this->data);
     }
 
-    // in dev
-    public function read_produk(){
-        $this->data['title'] = 'Detail Produk';
-        $this->data['breadcrumbs'] = array(
-            array(
-                'title' => 'Dashboard',
-                'url' => base_url()
-            ),
-            array(
-                'title' => 'Produk',
-                'url'   => base_url('master/produk')
-            ),
-            array(
-                'title' => 'Detail Produk'
-            )
-        );
-    }
-
     public function update_produk($id=''){
         $this->data['title'] = 'Ubah Data Produk';
         $this->data['breadcrumbs'] = array(
@@ -283,14 +268,10 @@ class Master extends BaseController{
         ];
 
         if(!empty($this->request->getPost('id'))) {
-            $save = $this->product_model->where(['id'=>$this->request->getPost('id')])->set($data)->update();
-        } else {
-            $save = $this->product_model->insert($data);
-        }
-        
-        if($save){
+            $this->product_model->where(['id'=>$this->request->getPost('id')])->set($data)->update();
             return redirect()->to('master/produk')->with('success', 'Berhasil Memperbaharui Data');
         } else {
+            $this->product_model->insert($data);
             return redirect()->to('master/produk')->with('success', 'Berhasil Menambahkan Data');
         }
     }

@@ -57,7 +57,7 @@
                                     <td><?= esc($u->ukuran) ?></td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="<?= base_url('/master/update_ukuran/'.esc($u->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                            <a href="<?= base_url('/master/edit_ukuran/'.esc($u->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                 <i class="fa fa-edit"></i> Edit Data
                                             </a>
                                             <a href="<?= base_url('/master/delete_ukuran/'.esc($u->id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
