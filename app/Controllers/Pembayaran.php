@@ -34,7 +34,7 @@ class Pembayaran extends BaseController{
             )
         );
 
-        $this->data['produk']    = $this->product_model->select('id, nama_produk, kode_produk')->get()->getResult();
+        $this->data['produk']    = $this->product_model->select('id, nama_produk, kode_produk, stok')->where('stok >', 0)->get()->getResult();
         $this->data['pelanggan'] = $this->customer_model->orderBy('id ASC')->select('*')->get()->getResult();
         $this->data['pembelian'] = $this->buying_model->select('*, (produk.harga * jumlah) As Total')
                                                         ->join('produk', 'produk.id = pembelian.product_id')
@@ -84,6 +84,7 @@ class Pembayaran extends BaseController{
     }
 
     public function emptyTable(){
+        $this->buying_model->emptyTable();
         return redirect()->to('pembayaran')->with('success','Data berhasil di reset');
     }
 
@@ -106,7 +107,6 @@ class Pembayaran extends BaseController{
             $this->product_model->set('stok', 'stok-'.$buy->jumlah, false)->where('id', $buy->product_id)->update();
         }
         $this->buying_model->emptyTable();
-
 
         return view('pembayaran/invoice_template', $this->data);
     }

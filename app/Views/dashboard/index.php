@@ -16,7 +16,9 @@
                     <div class="icon">
                       <i class="fas fa-cube"></i>
                     </div>
-                    <a href="<?= base_url('master/produk') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <?php if(session()->get('role_id') == 1 || session()->get('role_id') == 2) { ?>
+                        <a href="<?= base_url('master/produk') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <?php } ?>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -28,7 +30,9 @@
                     <div class="icon">
                         <i class="fas fa-truck"></i>
                     </div>
-                    <a href="<?= base_url('supplier') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <?php if(session()->get('role_id') == 1 || session()->get('role_id') == 2) { ?>
+                        <a href="<?= base_url('supplier') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <?php } ?>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -40,7 +44,9 @@
                     <div class="icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <a href="<?= base_url('pelanggan') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <?php if(session()->get('role_id') == 1 || session()->get('role_id') == 2) { ?>
+                        <a href="<?= base_url('pelanggan') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <?php } ?>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -52,7 +58,9 @@
                     <div class="icon">
                         <i class="fas fa-user-plus"></i>
                     </div>
-                    <a href="<?= base_url('user') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <?php if(session()->get('role_id') == 1) { ?>
+                        <a href="<?= base_url('user') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <?php } ?>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -63,7 +71,7 @@
                     </div>
                     <div class="icon">
                     </div>
-                    <a href="<?= base_url('Pembayaran') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('pembayaran') ?>" class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>

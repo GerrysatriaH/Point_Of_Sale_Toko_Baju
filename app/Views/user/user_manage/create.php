@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="card">
-        <form action="<?= base_url('user/submit_changes_user') ?>" method="post">
+        <form action="<?= base_url('user/create_user') ?>" method="post">
             <div class="card-body">
                 <div class="form-group">
                     <label for="username">Username : </label>

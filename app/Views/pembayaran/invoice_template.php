@@ -67,7 +67,6 @@
         <div class="transaksi">
             <table class="table">
                     <?php foreach($pembelian as $buy) : ?>
-                        <tr>
                             <td class="kiri">Item : <?= $buy->nama_produk ?></td>
                             <td class="kanan">Jumlah : <?= $buy->jumlah ?></td>
                             <td class="kanan">Harga : <?= 'Rp '.number_format($buy->harga, 0 , ',', '.') ?></td>
@@ -79,7 +78,7 @@
                 </tr>
                 <tr>
                     <td colspan="4" class="kanan">Sub Total</td>
-                    <td class="kanan"><?= $sub_total ?></td>
+                    <td class="kanan">Rp. <?= number_format($sub_total, 0, ',', '.') ?></td>
                 </tr>
                 <tr>
                     <td colspan="2"></td>
@@ -87,11 +86,11 @@
                 </tr>
                     <tr>
                         <td colspan="4" class="kanan">Diskon Pembelian</td>
-                        <td class="kanan"><?= $diskon ?></td>
+                        <td class="kanan"><?= $diskon ?> % </td>
                     </tr>
                 <tr>
                     <td colspan="4" class="kanan">Total Akhir</td>
-                    <td class="kanan"><?= $total_akhir ?></td>
+                    <td class="kanan">Rp. <?= number_format($total_akhir, 0, ',', '.') ?></td>
                 </tr>
                 <tr>
                     <td colspan="2"></td>
@@ -99,11 +98,11 @@
                 </tr>
                 <tr>
                     <td colspan="4" class="kanan">Tunai</td>
-                    <td class="kanan"><?= $tunai ?></td>
+                    <td class="kanan">Rp. <?= number_format($tunai, 0, ',', '.') ?></td>
                 </tr>
                 <tr>
                     <td colspan="4" class="kanan">Kembalian</td>
-                    <td class="kanan"><?= $tunai - $total_akhir ?></td>
+                    <td class="kanan">Rp. <?= number_format($tunai - $total_akhir, 0, ',', '.') ?></td>
                 </tr>
             </table>
         </div>

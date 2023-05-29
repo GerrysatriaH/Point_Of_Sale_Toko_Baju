@@ -44,7 +44,7 @@
                                     <select class="form-control select2" name="produk" id="produk" required>
                                         <option disabled selected hidden>-- Cari Produk --</option>
                                         <?php foreach(esc($produk) as $p){?>
-                                            <option value="<?= esc($p->id); ?>"><?= esc($p->kode_produk).' - '. esc($p->nama_produk); ?></option>
+                                            <option value="<?= esc($p->id); ?>"><?= esc($p->kode_produk).' | '. esc($p->nama_produk).' | stok: '. esc($p->stok); ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -161,11 +161,11 @@
             <div class="card card-outline">
                 <div class="card-body">
                     <p><button class="btn btn-success" id="bayar"><i class="fas fa-paper-plane"></i> Proses Pembayaran</button></p>
+                </form>
                     <a href="<?= base_url('pembayaran/emptytable') ?> "><button class="btn btn-warning" id="batal"><i class="fas fa-refresh"></i><span class="px-6">Reset</span></button></a>
                 </div>
             </div>
         </div>
-        </form>
     </div>
 </div>
 

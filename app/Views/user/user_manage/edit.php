@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="card">
-        <form action="<?= base_url('user/save_changes_user/'.esc($data['id'])) ?>" method="post">
+        <form action="<?= base_url('user/update_user/'.esc($data['id'])) ?>" method="post">
             <div class="card-body">
                 <div class="form-group">
                     <label for="username">Username</label>

@@ -51,7 +51,7 @@ class Master extends BaseController{
             ),
             array(
                 'title' => 'Kategori Produk',
-                'url' => base_url('kategori')
+                'url' => base_url('master/kategori')
             ),
             array(
                 'title' => 'Ubah Kategori Produk'
@@ -127,7 +127,7 @@ class Master extends BaseController{
             ),
             array(
                 'title' => 'Ukuran Produk',
-                'url' => base_url('ukuran')
+                'url' => base_url('master/ukuran')
             ),
             array(
                 'title' => 'Ubah Ukuran Produk'
