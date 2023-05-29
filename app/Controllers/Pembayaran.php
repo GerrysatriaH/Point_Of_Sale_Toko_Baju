@@ -84,7 +84,6 @@ class Pembayaran extends BaseController{
     }
 
     public function emptyTable(){
-        $this->buying_model->emptyTable();
         return redirect()->to('pembayaran')->with('success','Data berhasil di reset');
     }
 
@@ -103,6 +102,11 @@ class Pembayaran extends BaseController{
                                                         ->join('produk', 'produk.id = pembelian.product_id')
                                                         ->join('pelanggan', 'pelanggan.id = pembelian.customer_id')
                                                         ->get()->getResult();
+        foreach ($this->data['pembelian'] as $buy){
+            $this->product_model->set('stok', 'stok-'.$buy->jumlah, false)->where('id', $buy->product_id)->update();
+        }
+        $this->buying_model->emptyTable();
+
 
         return view('pembayaran/invoice_template', $this->data);
     }

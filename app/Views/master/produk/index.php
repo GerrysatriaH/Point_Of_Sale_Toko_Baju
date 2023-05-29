@@ -38,9 +38,6 @@
                                             <a href="<?= base_url('master/update_produk/'.esc($pr->id)) ?>" class="btn btn-warning text-light rounded mx-1" title="Edit Data">
                                                 <i class="fa fa-edit"></i> Edit Data
                                             </a>
-                                            <a href="<?= base_url('master/view_produk'.esc($pr->id)) ?>" class="btn btn-primary text-light rounded mx-1" title="View Data"> 
-                                                View Data
-                                            </a>
                                             <a href="<?= base_url('master/delete_produk/'.esc($pr->id)) ?>" onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()" class="btn btn-danger rounded mx-1" title="Delete Data">
                                                 <i class="fa fa-trash"></i> Delete Data
                                             </a>

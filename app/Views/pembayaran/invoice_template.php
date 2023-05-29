@@ -68,11 +68,10 @@
             <table class="table">
                     <?php foreach($pembelian as $buy) : ?>
                         <tr>
-                            <td class="kiri">Item : </td>
-                            <td class="kanan"><?= $buy->nama_produk ?></td>
+                            <td class="kiri">Item : <?= $buy->nama_produk ?></td>
                             <td class="kanan">Jumlah : <?= $buy->jumlah ?></td>
-                            <td class="kanan"><?= 'Rp '.number_format($buy->harga, 0 , ',', '.') ?></td>
-                            <td id="total" class="kanan"><?= 'Rp '.number_format($buy->Total, 0 , ',', '.') ?></td>
+                            <td class="kanan">Harga : <?= 'Rp '.number_format($buy->harga, 0 , ',', '.') ?></td>
+                            <td id="total" class="kanan">Total Akhir : <?= 'Rp '.number_format($buy->Total, 0 , ',', '.') ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <tr>
@@ -104,7 +103,7 @@
                 </tr>
                 <tr>
                     <td colspan="4" class="kanan">Kembalian</td>
-                    <td class="kanan"><?= $kembalian ?></td>
+                    <td class="kanan"><?= $tunai - $total_akhir ?></td>
                 </tr>
             </table>
         </div>
