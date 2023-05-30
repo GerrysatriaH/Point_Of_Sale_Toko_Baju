@@ -46,7 +46,7 @@ class User extends BaseController{
 
     public function create(){
 
-        $this->data['title'] = "Daftar Pengguna";
+        $this->data['title'] = "Tambah Data Pengguna";
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
@@ -68,7 +68,7 @@ class User extends BaseController{
 
     public function update($id=''){
 
-        $this->data['title'] = "Daftar Pengguna";
+        $this->data['title'] = "Ubah Data Pengguna";
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
